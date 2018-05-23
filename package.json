@@ -1,0 +1,20 @@
+{
+  "name": "im-gpnode",
+  "version": "1.0.0",
+  "description": "Intelimetrica's General Purpose Node Scripts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/intelimetrica/im-gpnode.git"
+  },
+  "keywords": [
+    "Utils",
+    "Intelimetrica"
+  ],
+  "author": "Intelimetrica",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/intelimetrica/im-gpnode#readme"
+}
