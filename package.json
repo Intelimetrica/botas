@@ -16,5 +16,8 @@
   ],
   "author": "Intelimetrica",
   "license": "ISC",
-  "homepage": "intelimetrica.com"
+  "homepage": "intelimetrica.com",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
 }
