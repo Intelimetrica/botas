@@ -1,3 +1,4 @@
+'use strict'
 /**
  * Signature generating algorithm: (extracted from https://developers.google.com/maps/documentation/maps-static/get-api-key#client-id)
  *
@@ -36,7 +37,7 @@ const encodeBase64Hash = (key, data) => crypto
  * @param secret
  * @returns {undefined}
  */
-const sign = (path, secret) => {
+const signGoogleMapsURL = (path, secret) => {
   const uri = parse(path);
   const webSafeSecret = decodeBase64Hash(unmakeWebSafe(secret));
   const signature = makeWebSafe(encodeBase64Hash(webSafeSecret, uri.path));
@@ -44,5 +45,5 @@ const sign = (path, secret) => {
   return format(uri) + `&signature=${signature}`;
 }
 
-module.exports = sign;
+module.exports = signGoogleMapsURL;
 

@@ -8,7 +8,7 @@ const format_params = (params, content) => {
 
   return {
     Bucket: params.Bucket,
-    Key: params.filename, // with extension
+    Key: params.Key, // Filename with extension
     Body: content,
     ACL: params.ACL || "private"
   }
@@ -39,10 +39,10 @@ const uploadToS3 = (params, content) => {
   return s3.putObject(params_formatted).promise()
     .then(data => {
       console.log(data);
-      console.log(`${filename} uploaded to s3`);
+      console.log(`${params.Key} uploaded to s3`);
       //process.exit(0);
     }).catch(err => {
-      console.log("Error uploading the pdf to S3")
+      console.log("Error uploading the file to S3")
       console.log(err);
       //process.exit(4);
     });
