@@ -36,17 +36,7 @@ const uploadToS3 = (params, content) => {
 
   const s3 = new AWS.S3({region: params.region});
 
-  return s3.putObject(params_formatted).promise()
-    /*.then(data => {
-      console.log(data);
-      console.log(`${params.Key} uploaded to s3`);
-      //process.exit(0);
-    }).catch(err => {
-      console.log("Error uploading the file to S3")
-      console.log(err);
-      //process.exit(4);
-    });
-    */
+  return s3.putObject(params_formatted).promise();
 }
 
 module.exports = uploadToS3;
