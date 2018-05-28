@@ -1,6 +1,6 @@
 {
   "name": "im-gpnode",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Intelimetrica's General Purpose Node Scripts",
   "main": "index.js",
   "scripts": {
