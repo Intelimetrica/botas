@@ -3,10 +3,24 @@
  *
  * @param arguments object
  * @param curr
- * @returns {undefined}
+ * @returns boolean
  */
 const containNils = (...args) =>
   !args.reduce((acc, curr) => !isNil(curr) && acc, true);
+
+/**
+ * flow
+ * Creates a pipe with all the functions provided, where the output of each
+ * function will serve as the input of the next function
+ * The final result is the input value with all the transformations provided
+ * applied in order
+ *
+ * @param [functions]
+ * @returns fnN(...fn2(fn1(value)))
+ */
+const flow = (functions) => {
+  return (value) => functions.reduce((acc, fn) => fn(acc), value)
+}
 
 /**
  * formatIfExist
@@ -82,10 +96,9 @@ function isTruthy(value) {
  */
 const isUndefined = value => (value === undefined);
 
-
-
 module.exports = {
   containNils,
+  flow,
   formatIfExist,
   isNil,
   isTruthy,

@@ -1,8 +1,12 @@
 const utils = require('./index');
+const mockMath = Object.create(global.Math);
+mockMath.random = () => 0.6789;
+global.Math = mockMath;
 
 /*
 module.exports = {
   containNils,
+  flow,
   formatIfExist,
   isNil,
   isTruthy,
@@ -16,7 +20,9 @@ describe("Testing utils", () => {
   });
 
   it('utils exports a fixed number of functions', () => {
-    expect(Object.keys(utils)).toHaveLength(5);
+    //Dear developer, if you are modifying this number, remember to write the corresponding test
+    //                                      ▼
+    expect(Object.keys(utils)).toHaveLength(6);
   });
 
   describe("containNils()", () => {
@@ -27,6 +33,22 @@ describe("Testing utils", () => {
       expect(containNils(null, ...truthy_values)).toBe(true);
       expect(containNils(...truthy_values)).toBe(false);
       expect(containNils(...truthy_values, undefined)).toBe(true);
+    });
+  });
+
+  describe("flow()", () => {
+    const { flow } = utils;
+
+    const randomPercentagePipeline = [
+      Math.random, //create a random number
+      x => x * 100, // multiply it by 100
+      x => x.toFixed(2), //fix number to 2 fixed-points
+      x => (Math.random()>0.5 ? "+" : "-") + x, //add a random sign
+      x => x +"%" //add the percentage sign
+    ];
+
+    it("executes the functions provided in order", () => {
+      expect(flow(randomPercentagePipeline)()).toEqual("+67.89%");
     });
   });
 

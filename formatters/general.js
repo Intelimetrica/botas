@@ -1,3 +1,4 @@
+const { flow } = require("../utils");
 const capitalize = word => {
   try {
     return `${word[0].toUpperCase()}${word.slice(1)}`;
@@ -57,14 +58,8 @@ const separate = (what, every, separator, from_r_to_l=true) => {
   return stack.join('');
 }
 
-const flow = (functions) => {
-  return (x) => functions.reduce((acc, fn) => fn(acc), x)
-}
 
 module.exports = {
-  //function composition
-  flow,
-
   //strings
   capitalize,
   leftpad,

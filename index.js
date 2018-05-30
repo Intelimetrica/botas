@@ -1,3 +1,3 @@
-const hi = name => `Hello ${name}`;
+const utils = require('./utils');
 
-module.exports = hi;
+module.exports = {...utils};
