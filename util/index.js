@@ -6,7 +6,7 @@
  * @returns {undefined}
  */
 const containNils = (...args) =>
-  args.reduce((acc, curr) => (curr != null) && acc, true);
+  !args.reduce((acc, curr) => !isNil(curr) && acc, true);
 
 /**
  * formatIfExist
@@ -65,6 +65,7 @@ const isNil = value => (value === undefined || value === null);
  * @returns boolean
  */
 function isTruthy(value) {
+  if (value === false) return false;
   if(typeof value === 'number') {
     return isFinite(value) && value !== 0;
   }
