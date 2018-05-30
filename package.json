@@ -4,7 +4,7 @@
   "description": "Intelimetrica's General Purpose Node Scripts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "dependencies": {
     "aws-sdk": "^2.245.1",
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "jest": "^23.0.1"
   }
 }
