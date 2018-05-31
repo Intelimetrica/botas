@@ -1,19 +1,4 @@
 const { flow } = require("../utils");
-const capitalize = word => {
-  try {
-    return `${word[0].toUpperCase()}${word.slice(1)}`;
-  } catch(err) {
-    console.error(err);
-    return word;
-  }
-}
-
-const leftpad = (len, pattern, str) => {
-  let pad = new Array(len).fill(pattern);
-  pad = pad.join("");
-  str = str.toString();
-  return `${pad.slice(0, len - str.length)}${str}`;
-};
 
 //TODO: force string
 const addPostfix = postfix => {
@@ -61,8 +46,6 @@ const separate = (what, every, separator, from_r_to_l=true) => {
 
 module.exports = {
   //strings
-  capitalize,
-  leftpad,
   addPostfix,
   separate,
 
