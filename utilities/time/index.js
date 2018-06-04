@@ -1,4 +1,4 @@
-const { leftpad } = require('./general');
+const { leftpad } = require('../general');
 
 const FIRST_DAY = { 'mx': 0 };
 
