@@ -95,11 +95,29 @@ function isTruthy(value) {
  */
 const isUndefined = value => (value === undefined);
 
+/**
+ * toFixed
+ * A functional interface of toFixed
+ *
+ * @param {number} digits
+ * @returns {function}
+ *
+ * @param {number} value
+ */
+const toFixed = (digits=2) => {
+  return value => {
+    if (typeof value !== 'number') return value;
+    return value.toFixed(digits);
+  };
+};
+
+
 module.exports = {
   containNils,
   flow,
   formatIfExist,
   isNil,
   isTruthy,
-  isUndefined
+  isUndefined,
+  toFixed
 }

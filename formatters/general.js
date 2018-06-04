@@ -1,12 +1,6 @@
 const { flow } = require("../utils");
 const { addPostfix, separate } = require("../string");
 
-const toFixed = decimals => {
-  return value => {
-    return value.toFixed(decimals);
-  };
-};
-
 //TODO: Add option for decimals
 const toPercentage = value => flow([
   x => x * 100,

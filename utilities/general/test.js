@@ -22,7 +22,7 @@ describe("Testing utils", () => {
   it('utils exports a fixed number of functions', () => {
     //Dear developer, if you are modifying this number, remember to write the corresponding test
     //                                      ▼
-    expect(Object.keys(utils)).toHaveLength(6);
+    expect(Object.keys(utils)).toHaveLength(7);
   });
 
   describe("containNils()", () => {
@@ -114,6 +114,26 @@ describe("Testing utils", () => {
       expect(isUndefined([])).toEqual(false);
       expect(isUndefined({})).toEqual(false);
       expect(isUndefined("")).toEqual(false);
+    });
+  });
+
+  describe("toFixed()", () => {
+    const { toFixed } = utils;
+    it("returns value unchanged if non numerical value is provided", () => {
+      expect(toFixed(2)("non numeric")).toEqual("non numeric");
+      expect(toFixed(2)("9.12345")).toEqual("9.12345");
+    });
+
+    it("adds a fixed amount of decimal points", () => {
+      expect(toFixed(1)(0.123456)).toEqual("0.1");
+      expect(toFixed(2)(0.123456)).toEqual("0.12");
+      expect(toFixed(3)(0.123456)).toEqual("0.123");
+      expect(toFixed(4)(0.123456)).toEqual("0.1235"); //toFixed rounds up
+    });
+
+    it("fixes 2 decimal points by default", () => {
+      expect(toFixed()(0.123456)).toEqual("0.12");
+      expect(toFixed()(1)).toEqual("1.00");
     });
   });
 });
