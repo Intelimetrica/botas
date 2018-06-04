@@ -1,7 +1,29 @@
 /**
+ * addPostfix
+ *
+ * @returns String
+ */
+const addPostfix = postfix => {
+  return value => {
+    return "" + value + postfix;
+  }
+};
+
+/**
+ * addPrefix
+ *
+ * @returns String
+ */
+const addPrefix = prefix => {
+  return value => {
+    return "" + prefix + value;
+  }
+};
+
+/**
  * capitalize
  *
- * @returns {undefined}
+ * @returns String
  */
 const capitalize = word => {
   try {
@@ -14,7 +36,7 @@ const capitalize = word => {
 /**
  * leftpad
  *
- * @returns {undefined}
+ * @returns String
  */
 const leftpad = (len, pattern, str) => {
   if (typeof str === 'object') return str;
@@ -30,30 +52,39 @@ const leftpad = (len, pattern, str) => {
 
 
 /**
- * addPostfix
- *
- * @returns {undefined}
- */
-const addPostfix = () => {};
-
-/**
- * addPrefix
- *
- * @returns {undefined}
- */
-const addPrefix = () => {};
-
-/**
  * separate
  *
  * @returns {undefined}
  */
-const separate = () => {};
+const separate = (what, every, separator, from_r_to_l=true) => {
+  what += "";
+  let stack = [];
+  if (typeof every !== "number") return what;
+  if (typeof separator === "object") return what;
+  try {
+  for (let i = 0; i < what.length; i++) {
+    if (i % every === 0 && i !== 0) {
+      stack.push(separator);
+    }
+
+    stack.push(from_r_to_l ?
+      what[what.length - i - 1] :
+      what[i]
+    );
+  }
+  if (from_r_to_l) stack = stack.reverse();
+
+  return stack.join('');
+  } catch (err) {
+    return what;
+  }
+}
+
 
 module.exports = {
+  addPostfix,
+  addPrefix,
   capitalize,
   leftpad,
-  addPrefix,
-  addPostfix,
   separate
 };
