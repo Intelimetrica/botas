@@ -1,9 +1,8 @@
 /**
  * containNils
  *
- * @param arguments object
- * @param curr
- * @returns boolean
+ * @param {...*} arguments object
+ * @returns {boolean}
  */
 const containNils = (...args) =>
   !args.reduce((acc, curr) => !isNil(curr) && acc, true);
@@ -15,7 +14,7 @@ const containNils = (...args) =>
  * The final result is the input value with all the transformations provided
  * applied in order
  *
- * @param [functions]
+ * @param {function}[]
  * @returns fnN(...fn2(fn1(value)))
  */
 const flow = (functions) => {
@@ -38,14 +37,14 @@ const flow = (functions) => {
  *    var amount = api.getAmount(); //=> undefined
  *    formatIfExist(toPercentage)('-')(amount); //=> "-"
  *
- * @param fn
- * @returns function
+ * @param {function} fn
+ * @returns {function}
  *
- * @param placeholder
- * @returns function
+ * @param {string|number} placeholder
+ * @returns {function}
  *
- * @param value
- * @returns fn(value) || placeholder
+ * @param {string|number} value
+ * @returns {fn(value)|placeholder}
  */
 function formatIfExist(fn) {
   return function(placeholder) {
@@ -65,8 +64,8 @@ function formatIfExist(fn) {
  * isNil
  * Checks if value is null or undefined
  *
- * @param value
- * @returns boolean
+ * @param {*} value
+ * @returns {boolean}
  */
 const isNil = value => (value === undefined || value === null);
 
@@ -75,8 +74,8 @@ const isNil = value => (value === undefined || value === null);
  * Checks if value is truthy.
  * This means not undefined, not null, not 0, not infinite
  *
- * @param value
- * @returns boolean
+ * @param {*} value
+ * @returns {boolean}
  */
 function isTruthy(value) {
   if (value === false) return false;
@@ -91,8 +90,8 @@ function isTruthy(value) {
  * Checks if value is undefined
  * You might want this ¯\_(ツ)_/¯
  *
- * @param value
- * @returns boolean
+ * @param {*} value
+ * @returns {boolean}
  */
 const isUndefined = value => (value === undefined);
 

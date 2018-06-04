@@ -1,7 +1,12 @@
 /**
  * addPostfix
+ * Adds a postfix to a given value
  *
- * @returns String
+ * @param {string|number} postfix
+ * @returns {function}
+ *
+ * @param {string|number} value
+ * @returns {string}
  */
 const addPostfix = postfix => {
   return value => {
@@ -11,8 +16,14 @@ const addPostfix = postfix => {
 
 /**
  * addPrefix
+ * Adds a prefix to a given value
  *
- * @returns String
+ * @param {string|number} prefix
+ * @returns {function}
+ *
+ * @param {string|number} value
+ *
+ * @returns {string}
  */
 const addPrefix = prefix => {
   return value => {
@@ -22,8 +33,10 @@ const addPrefix = prefix => {
 
 /**
  * capitalize
+ * Set first charater to UpperCase and the rest to LowerCase
  *
- * @returns String
+ * @param {string} word
+ * @returns {string}
  */
 const capitalize = word => {
   try {
@@ -35,8 +48,15 @@ const capitalize = word => {
 
 /**
  * leftpad
+ * Adds pattern to left of str until it fills len
+ * example:
+ *   leftpad(5, "*", "hey") //=> "**hey"
  *
- * @returns String
+ * @param {number} len
+ * @param {string|number} pattern
+ * @param {string|number} str
+ *
+ * @returns {string}
  */
 const leftpad = (len, pattern, str) => {
   if (typeof str === 'object') return str;
@@ -53,8 +73,19 @@ const leftpad = (len, pattern, str) => {
 
 /**
  * separate
+ * Adds separator every given number of characters
+ * example:
+ *   separate(12345678, 3, ",") //=> "12,345,678"
  *
- * @returns {undefined}
+ * Separator applies from right to left by default, but it can be configured
+ * to apply from left to right too by setting from_r_to_l=false
+ *
+ * @param {string|number} what
+ * @param {number} every
+ * @param {string|number} separator
+ * @param {boolean} [from_r_to_l=true]
+ *
+ * @returns {string}
  */
 const separate = (what, every, separator, from_r_to_l=true) => {
   what += "";
