@@ -1,18 +1,20 @@
 {
-  "name": "im-gpnode",
+  "name": "botas",
   "version": "1.0.5",
-  "description": "Intelimetrica's General Purpose Node Scripts",
+  "description": "Intelimetrica's sidekick for Js development. A helpers library",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/intelimetrica/im-gpnode.git"
+    "url": "git+ssh://git@bitbucket.org/intelimetrica/botas.git"
   },
   "keywords": [
     "Utils",
-    "Intelimetrica"
+    "Intelimetrica",
+    "sidekick",
+    "helpers"
   ],
   "author": "Intelimetrica",
   "license": "ISC",
