@@ -1,4 +1,9 @@
 /**
+ * String Utilities module.
+ * @module Strings
+ */
+
+/**
  * addPostfix
  * Adds a postfix to a given value
  *

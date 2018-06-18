@@ -1,3 +1,10 @@
+/**
+ * Formatter Utilities module.
+ *
+ * Common formatters that we use across different projects. Note that many methods
+ * in this module use methods from other modules.
+ * @module Formatters
+ */
 const { flow, toFixed, isNil } = require("../general");
 const { addPostfix, separate } = require("../string");
 

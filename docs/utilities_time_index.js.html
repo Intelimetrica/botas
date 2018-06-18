@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utilities/time/index.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li></ul><h3>Modules</h3><ul><li><a href="module-Formatters.html">Formatters</a><ul class='methods'><li data-type='method'><a href="module-Formatters.html#~separateThounsands">separateThounsands</a></li><li data-type='method'><a href="module-Formatters.html#~toPercentage">toPercentage</a></li></ul></li><li><a href="module-General.html">General</a><ul class='methods'><li data-type='method'><a href="module-General.html#~containNils">containNils</a></li><li data-type='method'><a href="module-General.html#~flow">flow</a></li><li data-type='method'><a href="module-General.html#~formatIfExist">formatIfExist</a></li><li data-type='method'><a href="module-General.html#~isNil">isNil</a></li><li data-type='method'><a href="module-General.html#~isTruthy">isTruthy</a></li><li data-type='method'><a href="module-General.html#~isUndefined">isUndefined</a></li><li data-type='method'><a href="module-General.html#~toFixed">toFixed</a></li></ul></li><li><a href="module-Strings.html">Strings</a><ul class='methods'><li data-type='method'><a href="module-Strings.html#~addPostfix">addPostfix</a></li><li data-type='method'><a href="module-Strings.html#~addPrefix">addPrefix</a></li><li data-type='method'><a href="module-Strings.html#~capitalize">capitalize</a></li><li data-type='method'><a href="module-Strings.html#~leftpad">leftpad</a></li><li data-type='method'><a href="module-Strings.html#~separate">separate</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#crypto">crypto</a></li><li><a href="global.html#downloadImage">downloadImage</a></li><li><a href="global.html#existsInS3">existsInS3</a></li><li><a href="global.html#signGoogleMapsURL">signGoogleMapsURL</a></li><li><a href="global.html#signS3Object">signS3Object</a></li><li><a href="global.html#uploadToS3">uploadToS3</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">utilities/time/index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const { leftpad } = require('../general');
+
+const FIRST_DAY = { 'mx': 0 };
+
+const WEEKDAYS_LONG = {
+  'mx': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado']
+};
+
+const WEEKDAYS_SHORT = {
+  'mx': ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
+};
+
+const MONTHS = {
+  'mx': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+};
+
+const MONTHS_SHORT = {
+  'mx': ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+};
+
+function getDaysOfMonth(date) {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  return 32 - new Date(year, month, 32).getDate();
+};
+
+const monthRange = (date = new Date()) => {
+  let [year, month] = dateSpread(getUTFDate(date), false);
+  let [_year, padded_month, lday] = dateSpread(
+    getUTFDate(new Date(year, month, 0)),
+    true
+  );
+
+  return {
+    from: `${year}-${padded_month}-01`,
+    to: `${year}-${padded_month}-${lday}`
+  };
+}
+
+const localeUtils = {
+  formatDay: (d, locale='mx') => `${WEEKDAYS_LONG[locale][d.getDay()]}, ${d.getDate()} ${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`,
+  formatMonthTitle: (d, locale) => `${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`,
+  formatWeekdayShort: (i, locale) => WEEKDAYS_SHORT[locale][i],
+  formatWeekdayLong: (i, locale) => WEEKDAYS_LONG[locale][i],
+  getFirstDayOfWeek: (locale) => FIRST_DAY[locale]
+};
+
+const formatDayMonthYear = (date = new Date(), locale='mx') => {
+  let [year, month, day] = dateSpread(getUTFDate(date), false);
+  return `${day} de ${MONTHS[locale][month-1]} ${year}`;
+}
+
+const formatDayMonthYearShort = (date = new Date(), locale='mx') => {
+  let [year, month, day] = dateSpread(getUTFDate(date), false);
+  return `${day} ${MONTHS_SHORT[locale][month-1]} ${year % 100}`;
+}
+
+function formatDateRange(date) {
+  let fecha_gte = new Date(date.fecha_gte.replace(/-/g, '\/')); //lowest
+  let fecha_lte = new Date(date.fecha_lte.replace(/-/g, '\/')); //highest
+
+  if(fecha_gte.getMonth() === fecha_lte.getMonth()) {
+    if((fecha_gte.getDate() === 1) &amp;&amp; (fecha_lte.getDate() === getDaysOfMonth(fecha_gte))) {
+      return `${MONTHS_SHORT.mx[fecha_gte.getMonth()]} ${fecha_gte.getFullYear()}`
+    } else {
+      return `${fecha_gte.getDate()} - ${fecha_lte.getDate()} ${MONTHS_SHORT.mx[fecha_gte.getMonth()]} ${fecha_gte.getFullYear()}`;
+    }
+  } else {
+    return `${fecha_gte.getDate()} ${MONTHS_SHORT.mx[fecha_gte.getMonth()]} - ${fecha_lte.getDate()} ${MONTHS_SHORT.mx[fecha_lte.getMonth()]} ${fecha_lte.getFullYear()}`;
+
+    return `${fecha_gte.getDate()} ${MONTHS_SHORT.mx[fecha_gte.getMonth()]} - ${fecha_lte.getDate()} ${MONTHS_SHORT.mx[fecha_lte.getMonth()]} ${fecha_lte.getFullYear()}`;
+  }
+};
+
+const dateSpread = (date = new Date(), padded=true) => [
+  date.getFullYear(),
+  leftpad(padded ? 2 : 0,0,date.getMonth()+1),
+  leftpad(padded ? 2 : 0,0,date.getDate()),
+  date.getHours(),
+  date.getMinutes()
+];
+
+const formatDateYYYYMMDD = (date) => {
+  const [year, month, day] = dateSpread(date);
+  return `${year}-${month}-${day}`;
+}
+
+const yesterday = () => {
+  let a_day_before = new Date();
+  a_day_before.setDate(a_day_before.getDate() - 1);
+
+  return formatDateYYYYMMDD(a_day_before);
+};
+
+const firstDayOfYear = () => {
+  const now = new Date();
+  return `2017-09-01`;
+  return `${now.getFullYear()}-01-01`;
+};
+
+const getUTFDate = (date) => {
+  date = new Date(date);
+  return new Date(date.getTime() + date.getTimezoneOffset()*60*1000);
+};
+
+const dateBasedSerial = () =>
+  dateSpread().reduce((acc, e) => `${acc}${e}`, "");
+
+/**
+ * Clock
+ * constructor = time in float format
+ * example: 
+ * new Clock(37.32454);
+ * Clock { time: 37.32454, hours: 37, minutes: 19, seconds: 28 }
+ * */
+class Clock {
+  constructor(time) {
+    this.time = time;
+    this.hours = Math.floor(this.time);
+    this.minutes = Math.floor((this.time % 1) * 60);
+    this.seconds = Math.round((this.time * 3600) % 60);
+  }
+
+  hh_mm_ss() {
+    const hh = this.hours;
+    const mm = leftpad(2, "0", this.minutes);
+    const ss = leftpad(2, "0", this.seconds);
+
+    return `${hh}:${mm}:${ss}`;
+  }
+
+  verbose_hrs_min() {
+    const hh = this.hours;
+    const mm = this.minutes;
+    const ss = this.seconds;
+
+    return `${hh}h ${mm}m`;
+  }
+
+  verbose_hrs_min_secs() {
+    const hh = this.hours;
+    const mm = this.minutes;
+    const ss = this.seconds;
+
+    return `${hh}h ${mm}m ${ss}s`;
+  }
+}
+
+module.exports = {
+  FIRST_DAY,
+  WEEKDAYS_LONG,
+  WEEKDAYS_SHORT,
+  MONTHS,
+  MONTHS_SHORT,
+  getDaysOfMonth,
+  monthRange,
+  localeUtils,
+  formatDayMonthYear,
+  formatDayMonthYearShort,
+  formatDateRange,
+  dateSpread,
+  formatDateYYYYMMDD,
+  yesterday,
+  firstDayOfYear,
+  getUTFDate,
+  dateBasedSerial,
+  Clock
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 18 2018 18:17:33 GMT-0500 (CDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

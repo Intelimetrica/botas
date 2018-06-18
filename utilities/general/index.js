@@ -1,4 +1,10 @@
 /**
+ * General Utilities module.
+ * @module General
+ *
+ */
+
+/**
  * containNils
  *
  * @param {...*} arguments object

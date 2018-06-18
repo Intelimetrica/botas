@@ -8,7 +8,7 @@ const AWS = require("aws-sdk");
  * AWS_SECRET_ACCESS_KEY env variables set in the process.env
  *
  * @param {string} filename - Filename of Object to be uploaded. Must contain extension.
- * @param {Binary string} content - File content in a Binary string.
+ * @param {Binary} content - File content in a Binary string.
  * @param {string} permission - Object's permission. "private" by default. Available options private | public-read | public-read-write | authenticated-read | aws-exec-read | bucket-owner-read | bucket-owner-full-control
  * @param {string} AWS_region - Bucket's AWS region. https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
  * @param {string} AWS_bucket - AWS Bucket name.
