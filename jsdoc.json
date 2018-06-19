@@ -5,13 +5,13 @@
   "source": {
     "include": "./",
     "includePattern": ".js$",
-    "excludePattern": "(node_modules/|docs/|test.js)"
+    "excludePattern": "(node_modules/|docs/|test.js/|docdash_fork)"
   },
   "plugins": [
     "plugins/markdown"
   ],
   "opts": {
-    "template": "../dockdash",
+    "template": "./docdash_fork",
     "encoding": "utf8",
     "destination": "docs/",
     "recurse": true,
