@@ -1,3 +1,7 @@
+/**
+ * Random scripts
+ * @module Scripts
+ */
 const fluentPromise = promise =>
   promise.then(
     solved => ({value: solved, status: "RESOLVED"}),

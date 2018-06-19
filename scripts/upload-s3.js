@@ -1,3 +1,7 @@
+/**
+ * Random scripts
+ * @module Scripts
+ */
 'use strict'
 
 const AWS = require("aws-sdk");

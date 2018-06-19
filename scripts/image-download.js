@@ -1,3 +1,7 @@
+/**
+ * Random scripts
+ * @module Scripts
+ */
 'use strict'
 
 const fs = require('fs');

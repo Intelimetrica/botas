@@ -1,3 +1,7 @@
+/**
+ * Random scripts
+ * @module Scripts
+ */
 'use strict'
 /**
  * Signature generating algorithm: (extracted from https://developers.google.com/maps/documentation/maps-static/get-api-key#client-id)

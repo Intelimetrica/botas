@@ -1,3 +1,7 @@
+/**
+ * Random scripts
+ * @module Scripts
+ */
 'use strict'
 /* *
  * Signature generating algorithm: (extracted from https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html#RESTAuthenticationQueryStringAuth)
