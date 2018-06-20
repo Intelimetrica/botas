@@ -1,24 +1,72 @@
-const { leftpad } = require('../general');
+const { leftpad } = require('../string');
 
-const FIRST_DAY = { 'mx': 0 };
+/**
+ * Time related utilities
+ * @module Time
+ */
 
-const WEEKDAYS_LONG = {
-  'mx': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado']
-};
-
-const WEEKDAYS_SHORT = {
-  'mx': ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
-};
-
+/**
+ * Months labels
+ * @member {Object} MONTHS
+ * @example
+ * MONTHS['mx'][0] //=> "Enero"
+ */
 const MONTHS = {
   'mx': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 };
 
+/**
+ * Months labes in 3 chars style
+ * @member {Object} MONTHS_SHORT
+ * @example
+ * MONTHS_SHORT['mx'][0] //=> "Ene"
+ */
 const MONTHS_SHORT = {
   'mx': ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
 };
 
-function getDaysOfMonth(date) {
+/**
+ * Days of week labels
+ * @member {Object} WEEKDAYS_LONG
+ * @example
+ * WEEKDAYS_LONG['mx'][0] //=> "Domingo"
+ */
+const WEEKDAYS_LONG = {
+  'mx': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado']
+};
+
+/**
+ * Days of week labels in 2 chars style
+ * @member {Object} WEEKDAYS_SHORT
+ * @example
+ * WEEKDAYS_SHORT['mx'][0] //=> "Do"
+ */
+const WEEKDAYS_SHORT = {
+  'mx': ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
+};
+
+/* ---end of members--- */
+
+/**
+ * Validates that an input is instance of Date
+ *
+ * @param {*} date - Element to check if is instance of Date
+ * @returns {boolean}
+ */
+const isDate = date => date instanceof Date;
+
+/**
+ * Give the count of how many days a month has. Supports leap-years
+ *
+ * @example
+ * getDaysOfMonth()
+ *
+ * @param {Date} date - Date
+ * @returns {number}
+ */
+function getDaysOfMonth(date = new Date()) {
+  if (!isDate(date)) date = new Date(date);
+
   const year = date.getFullYear();
   const month = date.getMonth();
   return 32 - new Date(year, month, 32).getDate();
@@ -36,14 +84,6 @@ const monthRange = (date = new Date()) => {
     to: `${year}-${padded_month}-${lday}`
   };
 }
-
-const localeUtils = {
-  formatDay: (d, locale='mx') => `${WEEKDAYS_LONG[locale][d.getDay()]}, ${d.getDate()} ${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`,
-  formatMonthTitle: (d, locale) => `${MONTHS[locale][d.getMonth()]} ${d.getFullYear()}`,
-  formatWeekdayShort: (i, locale) => WEEKDAYS_SHORT[locale][i],
-  formatWeekdayLong: (i, locale) => WEEKDAYS_LONG[locale][i],
-  getFirstDayOfWeek: (locale) => FIRST_DAY[locale]
-};
 
 const formatDayMonthYear = (date = new Date(), locale='mx') => {
   let [year, month, day] = dateSpread(getUTFDate(date), false);
@@ -72,12 +112,19 @@ function formatDateRange(date) {
   }
 };
 
+/**
+ * Array representation of a date: [YYYY, MM, DD, HH, mm]
+ *
+ * @param {Date} date - Instance of Date. If not provided, date will be Date.now()
+ * @param {boolean} [padded] - Defines if response will be padded with zeroes
+ * @returns {Array}
+ */
 const dateSpread = (date = new Date(), padded=true) => [
-  date.getFullYear(),
+  "" + date.getFullYear(),
   leftpad(padded ? 2 : 0,0,date.getMonth()+1),
   leftpad(padded ? 2 : 0,0,date.getDate()),
-  date.getHours(),
-  date.getMinutes()
+  leftpad(padded ? 2 : 0,0,date.getHours()),
+  leftpad(padded ? 2 : 0,0,date.getMinutes()),
 ];
 
 const formatDateYYYYMMDD = (date) => {
@@ -109,12 +156,12 @@ const dateBasedSerial = () =>
 /**
  * Clock
  * constructor = time in float format
- * example: 
+ * example:
  * new Clock(37.32454);
  * Clock { time: 37.32454, hours: 37, minutes: 19, seconds: 28 }
  * */
 class Clock {
-  constructor(time) {
+  constructor(time=Date.now()) {
     this.time = time;
     this.hours = Math.floor(this.time);
     this.minutes = Math.floor((this.time % 1) * 60);
@@ -147,22 +194,24 @@ class Clock {
 }
 
 module.exports = {
-  FIRST_DAY,
-  WEEKDAYS_LONG,
-  WEEKDAYS_SHORT,
   MONTHS,
   MONTHS_SHORT,
-  getDaysOfMonth,
-  monthRange,
-  localeUtils,
+  WEEKDAYS_LONG,
+  WEEKDAYS_SHORT,
+
+  dateBasedSerial,
+  dateSpread,
+  firstDayOfYear,
+  formatDateRange,
+  formatDateYYYYMMDD,
   formatDayMonthYear,
   formatDayMonthYearShort,
-  formatDateRange,
-  dateSpread,
-  formatDateYYYYMMDD,
-  yesterday,
-  firstDayOfYear,
+  getDaysOfMonth,
   getUTFDate,
-  dateBasedSerial,
+  isDate,
+  monthRange,
+  yesterday,
+
   Clock
 };
+
