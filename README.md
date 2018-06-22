@@ -38,3 +38,13 @@ Utilities is divided in 4 areas. `Formatters`, `General`, `String`, `Time`.
 Random scripts are just that, random scripts.
 - This meaning that `Scripts` are not exposed in the root of the library
 
+### Contributing
+For bug fixes and extending the library, submit your `Pull Request` with a description of your change and adding the prefix `feature`, `fix` or `refactor` to the name of your branch.
+
+Please, follow the library convention by addering to the following guides:
+- Use *two spaces* for identation.
+- All methods should have *unit tests*.
+- All methods should have *docstrings* with the corresponding documentation.
+- All methods are alphabethically ordered in their modules.
+
+Worry about writing the documentation. Don't worry about updating `docs branch`
