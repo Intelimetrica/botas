@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Strings - Documentation</title>
+    <title>Scripts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Strings</h1>
+    <h1 class="page-title">Scripts</h1>
     
 
     
@@ -49,7 +49,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>String Utilities module.</p></div>
+            <div class="description"><p>Random scripts</p></div>
         
 
         
@@ -145,7 +145,7 @@
 
     
 
-    <h4 class="name" id="~addPostfix"><span class="type-signature">(inner) </span>addPostfix<span class="signature">(postfix, value)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id=".downloadImage"><span class="type-signature">(async, static) </span>downloadImage<span class="signature">(url, file_path)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -192,130 +192,269 @@
 
 
 <div class="description">
-    <p>Adds a postfix to a given value</p>
-<p>Note:</p>
-<ul>
-<li>This is a composed function, so check the example to know how to call it</li>
+    <p>downloadImage</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Url of image to download</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>file_path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Complete path to final filename, for example: ~/home/user/Documents/project/download.png</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".fluentPromise"><span class="type-signature">(static) </span>fluentPromise<span class="signature">(promise)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Wrap a promise resolution into a <code>{value, status}</code> object.</p>
+<p>Used along with <code>Promise.all</code> allows rejected promises without breaking execution of other Promises.
+To see how to use it along with Promise.all go to https://gist.github.com/Rantelo/84684a7b7babf64183587e61d98945df</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>promise</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Promise</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><code>Promise</code> to be wrapped</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>{value, status}</li>
 </ul>
 </div>
 
 
 
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>addPostfix(5)("%"); //=> '5%'</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>postfix</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Postfix</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Value</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
 <dl class="param-type">
     <dt>
         Type
     </dt>
     <dd>
         
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
     </dd>
@@ -329,7 +468,7 @@
 
     
 
-    <h4 class="name" id="~addPrefix"><span class="type-signature">(inner) </span>addPrefix<span class="signature">(prefix, value)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id=".signGoogleMapsURL"><span class="type-signature">(static) </span>signGoogleMapsURL<span class="signature">(url, secret)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -376,11 +515,17 @@
 
 
 <div class="description">
-    <p>Adds a prefix to a given value</p>
-<p>Note:</p>
-<ul>
-<li>This is a composed function, so check the example to know how to call it</li>
-</ul>
+    <p>Sign GoogleMapsStaticAPI url
+Signature generating algorithm: (extracted from https://developers.google.com/maps/documentation/maps-static/get-api-key#client-id)</p>
+<ol>
+<li>Generate query with clientID (signature is not added yet)</li>
+<li>Strip domain from request ( localhost:3000/  -- /maps/api/static?center=... )</li>
+<li>Retrieve private key, originally in Base64
+Sign the URL using HMAC-SHA1. First decode the private key.
+Note that Base64 for URLS replaces + and / with - and _</li>
+<li>Encode the resulting binary signature using the modified Base64</li>
+<li>Attach the signature to the URL</li>
+</ol>
 </div>
 
 
@@ -389,11 +534,6 @@
 
 
 
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>addPrefix(5)(">"); //=> '>5'</code></pre>
 
 
 
@@ -423,16 +563,13 @@
 
         <tr>
             
-                <td class="name"><code>prefix</code></td>
+                <td class="name"><code>url</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
 
 
             
@@ -442,23 +579,20 @@
 
             
 
-            <td class="description last"><p>Prefix</p></td>
+            <td class="description last"><p>Url to be signed</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>secret</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
+<span class="param-type">srting</span>
 
 
             
@@ -468,7 +602,7 @@
 
             
 
-            <td class="description last"><p>Value</p></td>
+            <td class="description last"><p>Secret</p></td>
         </tr>
 
     
@@ -513,7 +647,7 @@
 
     
 
-    <h4 class="name" id="~capitalize"><span class="type-signature">(inner) </span>capitalize<span class="signature">(word)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id=".signS3Object"><span class="type-signature">(static) </span>signS3Object<span class="signature">(s3_domain, s3_bucket, s3_object_key, AWSAccessKeyId, AWSSecretAccessKey, secs_to_expire)</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
@@ -560,7 +694,24 @@
 
 
 <div class="description">
-    <p>Set first charater to UpperCase and the rest to LowerCase</p>
+    <p>Signature generating algorithm: (extracted from https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html#RESTAuthenticationQueryStringAuth)</p>
+<ol>
+<li><p>Create a string_to_sign containing the http verb, time to expire in
+seconds since epoch and route to object - for example:
+&quot;GET\n\n\n1528921484\n/bucketname/object.png&quot;</p>
+<p>Note: use the same amount of line breaks, since they are headers. We
+are not taking them into consideration right now. Maybe later...</p>
+</li>
+<li>Sign the string_to_sign using HMAC-SHA1 and the AWS secretAccessKey</li>
+<li>Encode the result into Base64</li>
+<li>Make resulting binary Url-safe</li>
+<li><p>Use this signature as the ?Signature= param in the url</p>
+</li>
+<li><p>You migh also need to add AWSAccessKeyId= and Expires= params to the url.
+At the end, the url will look like the following:
+https://s3.aws.com/bucket/obj.png?AWSAccessKeyId=XXXX&amp;Signature=YYYY&amp;Expires=12345</p>
+</li>
+</ol>
 </div>
 
 
@@ -569,12 +720,6 @@
 
 
 
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>capitalize("botas"); //=> 'Botas'
-capitalize("this is a sentence"); //=> 'This is a sentence'</code></pre>
 
 
 
@@ -591,366 +736,6 @@ capitalize("this is a sentence"); //=> 'This is a sentence'</code></pre>
 
         <th>Type</th>
 
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>word</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>String to capitalize</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~leftpad"><span class="type-signature">(inner) </span>leftpad<span class="signature">(len, pattern, str)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Adds pattern to left of str until it fills len</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>leftpad(5, "*", "hey"); //=> "**hey"
-leftpad(10, "_*", "hey"); //=> "_*_*_*_hey"</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>len</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Length of final string</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pattern</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Pattern to fill in the blanks</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>str</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Value to be padded</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~separate"><span class="type-signature">(inner) </span>separate<span class="signature">(what, every, separator, from_r_to_l<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Adds separator every given number of characters</p>
-<p>Separator applies from right to left by default, but it can be configured
-to apply from left to right too by setting from_r_to_l=false</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>separate(12345678, 3, ","); //=> "12,345,678"
-separate(12345678, 3, "-", false); //=> "123-456-78"</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
         
 
         
@@ -966,29 +751,18 @@ separate(12345678, 3, "-", false); //=> "123-456-78"</code></pre>
 
         <tr>
             
-                <td class="name"><code>what</code></td>
+                <td class="name"><code>s3_domain</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
 
 
             
             </td>
 
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
             
 
             
@@ -997,57 +771,127 @@ separate(12345678, 3, "-", false); //=> "123-456-78"</code></pre>
                 </td>
             
 
-            <td class="description last"><p>Value to separate</p></td>
+            <td class="description last"><p>For example https://s3-west.aws.com</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>every</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Periocity of separation</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>separator</code></td>
+                <td class="name"><code>s3_bucket</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
-|
 
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>S3 bucket</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>s3_object_key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>File name with extension</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AWSAccessKeyId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>AWS Access Key ID</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AWSSecretAccessKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>AWS Access Key Secret</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secs_to_expire</code></td>
+            
+
+            <td class="type">
+            
+                
 <span class="param-type">number</span>
 
 
@@ -1055,61 +899,17 @@ separate(12345678, 3, "-", false); //=> "123-456-78"</code></pre>
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
                 <td class="default">
                 
-                </td>
-            
-
-            <td class="description last"><p>Value to use in separation</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>from_r_to_l</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
+                    <code>120</code>
                 
                 </td>
             
 
-            
-                <td class="default">
-                
-                    <code>true</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>False to separate from left to right</p></td>
+            <td class="description last"><p>Number of seconds in which signature will expire
+                                 this param is set to 120secs by default</p></td>
         </tr>
 
     
@@ -1141,6 +941,464 @@ separate(12345678, 3, "-", false); //=> "123-456-78"</code></pre>
     <dd>
         
 <span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".uploadToS3"><span class="type-signature">(static) </span>uploadToS3<span class="signature">(filename, content, permission, AWS_region, AWS_bucket)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Uploads a file S3.
+In order to use this method you should have AWS_ACCESS_KEY_ID and
+AWS_SECRET_ACCESS_KEY env variables set in the process.env</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filename</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Filename of Object to be uploaded. Must contain extension.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Binary</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>File content in a Binary string.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>permission</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>private</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Object's permission. &quot;private&quot; by default. Available options private | public-read | public-read-write | authenticated-read | aws-exec-read | bucket-owner-read | bucket-owner-full-control</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AWS_region</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Bucket's AWS region. https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AWS_bucket</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>AWS Bucket name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~existsInS3"><span class="type-signature">(inner) </span>existsInS3<span class="signature">(filename, AWS_region, AWS_bucket)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Checks if a file exists in S3.
+In order to use this method you should have AWS_ACCESS_KEY_ID and
+AWS_SECRET_ACCESS_KEY env variables set in the process.env</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filename</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Filename of Object to be checked. Must contain extension.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AWS_region</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Bucket's AWS region. https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AWS_bucket</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>AWS Bucket name.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
 
 
     </dd>

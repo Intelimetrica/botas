@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Formatters - Documentation</title>
+    <title>Clock - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Formatters</h1>
+    <h1 class="page-title">Clock</h1>
     
 
     
@@ -39,8 +39,13 @@
 
 <header>
     
+        <h2>
+            <span class="ancestors"><a href="module-Time.html">Time</a>~</span>
         
-            
+        Clock
+        </h2>
+        
+            <div class="class-description"><p>Clock class to transform a <code>float</code> represented time into different formats</p></div>
         
     
 </header>
@@ -49,13 +54,14 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Formatter Utilities module.</p>
-<p>Common formatters that we use across different projects. Note that many methods
-in this module use methods from other modules.</p></div>
-        
 
-        
-            
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Clock"><span class="type-signature"></span>new Clock<span class="signature">(time)</span><span class="type-signature"> &rarr; {Clock}</span></h4>
+
+    
 
 
 
@@ -107,23 +113,98 @@ in this module use methods from other modules.</p></div>
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>let clock = new Clock(37.32454);
+//=> clock = Clock { time: 37.32454, hours: 37, minutes: 19, seconds: 28 }
+clock.hh_mm_ss(); //=> 37:19:28
+clock.verbose_hrs_min(); //=> 37h 19m
+clock.verbose_hrs_min_secs(); //=> 37h 19m 28s</code></pre>
 
 
 
 
+    <h5>Parameters:</h5>
+    
 
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-
-
-
-
-
-
-
-
-
+        <th>Type</th>
 
         
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Float number representing a time</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Clock</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
     
     </div>
 
@@ -139,355 +220,6 @@ in this module use methods from other modules.</p></div>
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id="~separateThousands"><span class="type-signature">(inner) </span>separateThousands<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Separate input from right to left in buckets of 3 digits using commas.
-Useful to format prices.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>separateThousands(12000); //=>'12,000'
-separateThousands('1250000'); //=> '1,250,000'</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-|
-
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Input that will be separated with commas every 3 elements</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="~toPercentage"><span class="type-signature">(inner) </span>toPercentage<span class="signature">(value, decimal_points)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Run a pipeline of formatters to transform a ranged 0 to 1 number into a
-readable percentage.
-The output would look like <code>XX.XX %</code></p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>toPercentage(0.67489); //=> '67.49 %'
-toPercentage(0.67439, 1); //=> '67.4 %'</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Floating precision number to transform into percentage</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>decimal_points</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>2</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>Floating points to take in the final format</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
     
 
     

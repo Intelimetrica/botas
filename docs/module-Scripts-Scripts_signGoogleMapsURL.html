@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Scripts/signGoogleMapsURL - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-Time-Clock.html">Clock</a></li></ul><h3>Modules</h3><ul><li><a href="module-Formatters.html">Formatters</a><ul class='methods'><li data-type='method'><a href="module-Formatters.html#~separateThousands">separateThousands</a></li><li data-type='method'><a href="module-Formatters.html#~toPercentage">toPercentage</a></li></ul></li><li><a href="module-General.html">General</a><ul class='methods'><li data-type='method'><a href="module-General.html#~containNils">containNils</a></li><li data-type='method'><a href="module-General.html#~flow">flow</a></li><li data-type='method'><a href="module-General.html#~formatIfExist">formatIfExist</a></li><li data-type='method'><a href="module-General.html#~isNil">isNil</a></li><li data-type='method'><a href="module-General.html#~isTruthy">isTruthy</a></li><li data-type='method'><a href="module-General.html#~isUndefined">isUndefined</a></li><li data-type='method'><a href="module-General.html#~toFixed">toFixed</a></li></ul></li><li><a href="module-Scripts.html">Scripts</a><ul class='methods'><li data-type='method'><a href="module-Scripts.html#~downloadImage">downloadImage</a></li><li data-type='method'><a href="module-Scripts.html#~existsInS3">existsInS3</a></li><li data-type='method'><a href="module-Scripts.html#~fluentPromise">fluentPromise</a></li></ul></li><li><a href="module-Strings.html">Strings</a><ul class='methods'><li data-type='method'><a href="module-Strings.html#~addPostfix">addPostfix</a></li><li data-type='method'><a href="module-Strings.html#~addPrefix">addPrefix</a></li><li data-type='method'><a href="module-Strings.html#~capitalize">capitalize</a></li><li data-type='method'><a href="module-Strings.html#~leftpad">leftpad</a></li><li data-type='method'><a href="module-Strings.html#~separate">separate</a></li></ul></li><li><a href="module-Time.html">Time</a><ul class='methods'><li data-type='method'><a href="module-Time.html#~dateBasedSerial">dateBasedSerial</a></li><li data-type='method'><a href="module-Time.html#~dateSpread">dateSpread</a></li><li data-type='method'><a href="module-Time.html#~firstDayOfYear">firstDayOfYear</a></li><li data-type='method'><a href="module-Time.html#~formatDateRange">formatDateRange</a></li><li data-type='method'><a href="module-Time.html#~formatDateYYYY_MM_DD">formatDateYYYY_MM_DD</a></li><li data-type='method'><a href="module-Time.html#~formatDayMonthYear">formatDayMonthYear</a></li><li data-type='method'><a href="module-Time.html#~formatDayMonthYearShort">formatDayMonthYearShort</a></li><li data-type='method'><a href="module-Time.html#~getDaysOfMonth">getDaysOfMonth</a></li><li data-type='method'><a href="module-Time.html#~getUTCDate">getUTCDate</a></li><li data-type='method'><a href="module-Time.html#~isDate">isDate</a></li><li data-type='method'><a href="module-Time.html#~monthRange">monthRange</a></li><li data-type='method'><a href="module-Time.html#~yesterday">yesterday</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-Scripts-Scripts_signGoogleMapsURL.html">Scripts/signGoogleMapsURL</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Scripts/signGoogleMapsURL</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="module-Scripts.html">Scripts</a>~</span>
+        
+        Scripts/signGoogleMapsURL
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+        
+            <div class="description"><p>Sign GoogleMapsStaticAPI url
+Signature generating algorithm: (extracted from https://developers.google.com/maps/documentation/maps-static/get-api-key#client-id)</p>
+<ol>
+<li>Generate query with clientID (signature is not added yet)</li>
+<li>Strip domain from request ( localhost:3000/  -- /maps/api/static?center=... )</li>
+<li>Retrieve private key, originally in Base64
+Sign the URL using HMAC-SHA1. First decode the private key.
+Note that Base64 for URLS replaces + and / with - and _</li>
+<li>Encode the resulting binary signature using the modified Base64</li>
+<li>Attach the signature to the URL</li>
+</ol></div>
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jun 22 2018 11:58:22 GMT-0500 (CDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

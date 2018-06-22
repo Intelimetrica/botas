@@ -4,7 +4,7 @@ All heroes have sidekicks and as Dora the Explorer, Intelimetrica has its own si
 
 Botas is a javascript utilities library to be used in products across the firm.
 
-<img src="http://intelimetrica.com/images/Botas_azulmdpi3.jpg" alt="Botas logo" width="150px">
+<img src="http://intelimetrica.com/images/Botas_azulmdpi3.svg" alt="Botas logo" width="150px">
 
 ### Installation
 ```bash
