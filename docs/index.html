@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-Time-Clock.html">Clock</a></li></ul><h3>Modules</h3><ul><li><a href="module-Formatters.html">Formatters</a><ul class='methods'><li data-type='method'><a href="module-Formatters.html#~separateThousands">separateThousands</a></li><li data-type='method'><a href="module-Formatters.html#~toPercentage">toPercentage</a></li></ul></li><li><a href="module-General.html">General</a><ul class='methods'><li data-type='method'><a href="module-General.html#~containNils">containNils</a></li><li data-type='method'><a href="module-General.html#~flow">flow</a></li><li data-type='method'><a href="module-General.html#~formatIfExist">formatIfExist</a></li><li data-type='method'><a href="module-General.html#~isNil">isNil</a></li><li data-type='method'><a href="module-General.html#~isTruthy">isTruthy</a></li><li data-type='method'><a href="module-General.html#~isUndefined">isUndefined</a></li><li data-type='method'><a href="module-General.html#~toFixed">toFixed</a></li></ul></li><li><a href="module-Scripts.html">Scripts</a><ul class='methods'><li data-type='method'><a href="module-Scripts.html#.downloadImage">downloadImage</a></li><li data-type='method'><a href="module-Scripts.html#.fluentPromise">fluentPromise</a></li><li data-type='method'><a href="module-Scripts.html#.signGoogleMapsURL">signGoogleMapsURL</a></li><li data-type='method'><a href="module-Scripts.html#.signS3Object">signS3Object</a></li><li data-type='method'><a href="module-Scripts.html#.uploadToS3">uploadToS3</a></li><li data-type='method'><a href="module-Scripts.html#~existsInS3">existsInS3</a></li></ul></li><li><a href="module-Strings.html">Strings</a><ul class='methods'><li data-type='method'><a href="module-Strings.html#~addPostfix">addPostfix</a></li><li data-type='method'><a href="module-Strings.html#~addPrefix">addPrefix</a></li><li data-type='method'><a href="module-Strings.html#~capitalize">capitalize</a></li><li data-type='method'><a href="module-Strings.html#~leftpad">leftpad</a></li><li data-type='method'><a href="module-Strings.html#~separate">separate</a></li></ul></li><li><a href="module-Time.html">Time</a><ul class='methods'><li data-type='method'><a href="module-Time.html#~dateBasedSerial">dateBasedSerial</a></li><li data-type='method'><a href="module-Time.html#~dateSpread">dateSpread</a></li><li data-type='method'><a href="module-Time.html#~firstDayOfYear">firstDayOfYear</a></li><li data-type='method'><a href="module-Time.html#~formatDateRange">formatDateRange</a></li><li data-type='method'><a href="module-Time.html#~formatDateYYYY_MM_DD">formatDateYYYY_MM_DD</a></li><li data-type='method'><a href="module-Time.html#~formatDayMonthYear">formatDayMonthYear</a></li><li data-type='method'><a href="module-Time.html#~formatDayMonthYearShort">formatDayMonthYearShort</a></li><li data-type='method'><a href="module-Time.html#~getDaysOfMonth">getDaysOfMonth</a></li><li data-type='method'><a href="module-Time.html#~getUTCDate">getUTCDate</a></li><li data-type='method'><a href="module-Time.html#~isDate">isDate</a></li><li data-type='method'><a href="module-Time.html#~monthRange">monthRange</a></li><li data-type='method'><a href="module-Time.html#~yesterday">yesterday</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>Botas</h1><p>All heroes have sidekicks and as Dora the Explorer, Intelimetrica has its own sidekick Botas!</p>
+<p>Botas is a javascript utilities library to be used in products across the firm.</p>
+<p><img src="http://intelimetrica.com/images/Botas_azulmdpi3.svg" alt="Botas logo" width="150px"></p>
+<h3>Installation</h3><pre class="prettyprint source lang-bash"><code>$ npm install --save botas</code></pre><h3>Usage</h3><pre class="prettyprint source lang-javascript"><code>// To use utilities from Formatters, General, String or Time
+const { separateThousands } = require('botas');
+
+// or using ES6
+import { separateThousands } from 'botas';
+
+// then use it
+separateThousands(12000); //=>'12,000'
+separateThousands('1250000'); //=> '1,250,000'
+
+// To use a random script
+const { uploadToS3 } = require('botas/scripts');
+
+// or using ES6
+const { uploadToS3 } from 'botas/scripts';</code></pre><h3>How is the library organized?</h3><p>Botas has utilities and random scripts</p>
+<p>Utilities is divided in 4 areas. <code>Formatters</code>, <code>General</code>, <code>String</code>, <code>Time</code>.</p>
+<ul>
+<li>All utilities are exposed in the root of the library, so you don't need to know where a method belongs at the time of importing it.</li>
+</ul>
+<p>Random scripts are just that, random scripts.</p>
+<ul>
+<li>This meaning that <code>Scripts</code> are not exposed in the root of the library</li>
+</ul>
+<h3>Contributing</h3><p>For bug fixes and extending the library, submit your <code>Pull Request</code> with a description of your change and adding the prefix <code>feature</code>, <code>fix</code> or <code>refactor</code> to the name of your branch.</p>
+<p>Please, follow the library convention by addering to the following guides:</p>
+<ul>
+<li>Use <em>two spaces</em> for identation.</li>
+<li>All methods should have <em>unit tests</em>.</li>
+<li>All methods should have <em>docstrings</em> with the corresponding documentation.</li>
+<li>All methods are alphabethically ordered in their modules.</li>
+</ul>
+<p>Worry about writing the documentation. Don't worry about updating <code>docs branch</code></p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jun 22 2018 15:53:31 GMT-0500 (CDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

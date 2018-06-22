@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>utilities/formatter - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Clock.html">Clock</a></li></ul><h3>Modules</h3><ul><li><a href="module-utilities_formatter.html">utilities/formatter</a><ul class='methods'><li data-type='method'><a href="module-utilities_formatter.html#~separateThounsands">separateThounsands</a></li><li data-type='method'><a href="module-utilities_formatter.html#~toPercentage">toPercentage</a></li></ul></li><li><a href="module-utilities_general.html">utilities/general</a><ul class='methods'><li data-type='method'><a href="module-utilities_general.html#~containNils">containNils</a></li><li data-type='method'><a href="module-utilities_general.html#~flow">flow</a></li><li data-type='method'><a href="module-utilities_general.html#~formatIfExist">formatIfExist</a></li><li data-type='method'><a href="module-utilities_general.html#~isNil">isNil</a></li><li data-type='method'><a href="module-utilities_general.html#~isTruthy">isTruthy</a></li><li data-type='method'><a href="module-utilities_general.html#~isUndefined">isUndefined</a></li><li data-type='method'><a href="module-utilities_general.html#~toFixed">toFixed</a></li></ul></li><li><a href="module-utilities_strings.html">utilities/strings</a><ul class='methods'><li data-type='method'><a href="module-utilities_strings.html#~addPostfix">addPostfix</a></li><li data-type='method'><a href="module-utilities_strings.html#~addPrefix">addPrefix</a></li><li data-type='method'><a href="module-utilities_strings.html#~capitalize">capitalize</a></li><li data-type='method'><a href="module-utilities_strings.html#~leftpad">leftpad</a></li><li data-type='method'><a href="module-utilities_strings.html#~separate">separate</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#crypto">crypto</a></li><li><a href="global.html#downloadImage">downloadImage</a></li><li><a href="global.html#existsInS3">existsInS3</a></li><li><a href="global.html#signGoogleMapsURL">signGoogleMapsURL</a></li><li><a href="global.html#signS3Object">signS3Object</a></li><li><a href="global.html#uploadToS3">uploadToS3</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">utilities/formatter</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Formatter Utilities module.
+Common formatters that we use across different projects. Note that many methods
+in this module use methods from other modules.</p></div>
+        
+
+        
+            
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_formatters_index.js.html">utilities/formatters/index.js</a>, <a href="utilities_formatters_index.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~separateThounsands"><span class="type-signature">(inner) </span>separateThounsands<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_formatters_index.js.html">utilities/formatters/index.js</a>, <a href="utilities_formatters_index.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>separateThounsands</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toPercentage"><span class="type-signature">(inner) </span>toPercentage<span class="signature">(value, decimal_points)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utilities_formatters_index.js.html">utilities/formatters/index.js</a>, <a href="utilities_formatters_index.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>toPercentage
+Run a pipeline of formatters to transform a ranged 0 to 1 number into a
+readable percentage.
+The output would look like <code>XX.XX %</code></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decimal_points</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>2</code>
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 18 2018 10:00:03 GMT-0500 (CDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>queryOperators - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="base.html">base</a><ul class='methods'><li data-type='method'><a href="base.html#addDefaultOptions">addDefaultOptions</a></li><li data-type='method'><a href="base.html#addOptions">addOptions</a></li><li data-type='method'><a href="base.html#destroy">destroy</a></li><li data-type='method'><a href="base.html#end">end</a></li></ul></li><li><a href="base_chains.html">base/chains</a></li><li><a href="Clock.html">Clock</a></li><li><a href="documents_model.html">documents/model</a><ul class='methods'><li data-type='method'><a href="documents_model.html#.all">all</a></li><li data-type='method'><a href="documents_model.html#.any">any</a></li><li data-type='method'><a href="documents_model.html#.every">every</a></li><li data-type='method'><a href="documents_model.html#.find">find</a></li><li data-type='method'><a href="documents_model.html#.findKeys">findKeys</a></li><li data-type='method'><a href="documents_model.html#.findOne">findOne</a></li><li data-type='method'><a href="documents_model.html#.findOneKey">findOneKey</a></li><li data-type='method'><a href="documents_model.html#.get">get</a></li><li data-type='method'><a href="documents_model.html#.remove">remove</a></li><li data-type='method'><a href="documents_model.html#.set">set</a></li><li data-type='method'><a href="documents_model.html#.some">some</a></li><li data-type='method'><a href="documents_model.html#.update">update</a></li></ul></li><li><a href="module-documents_probe.queryOperators.html">queryOperators</a><ul class='members'><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$all">$all</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$and">$and</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$elemMatch">$elemMatch</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$eq">$eq</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$exists">$exists</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$gt">$gt</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$gte">$gte</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$in">$in</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$lt">$lt</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$lte">$lte</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$mod">$mod</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$ne">$ne</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$nin">$nin</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$nor">$nor</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$not">$not</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$or">$or</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$regex">$regex</a></li><li data-type='member'><a href="module-documents_probe.queryOperators.html#.$size">$size</a></li></ul></li><li><a href="module-documents_probe.updateOperators.html">updateOperators</a><ul class='members'><li data-type='member'><a href="module-documents_probe.updateOperators.html#.$dec">$dec</a></li><li data-type='member'><a href="module-documents_probe.updateOperators.html#.$inc">$inc</a></li><li data-type='member'><a href="module-documents_probe.updateOperators.html#.$pop">$pop</a></li><li data-type='member'><a href="module-documents_probe.updateOperators.html#.$pull">$pull</a></li><li data-type='member'><a href="module-documents_probe.updateOperators.html#.$push">$push</a></li><li data-type='member'><a href="module-documents_probe.updateOperators.html#.$unset">$unset</a></li></ul></li><li><a href="module-ink_collector-ACollector.html">ACollector</a><ul class='methods'><li data-type='method'><a href="module-ink_collector-ACollector.html#all">all</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#any">any</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#every">every</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#find">find</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#findKeys">findKeys</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#findOne">findOne</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#findOneKey">findOneKey</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#remove">remove</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#some">some</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#unique">unique</a></li><li data-type='method'><a href="module-ink_collector-ACollector.html#update">update</a></li></ul></li><li><a href="module-ink_collector-CollectorBase.html">CollectorBase</a></li><li><a href="module-ink_collector-OCollector.html">OCollector</a><ul class='methods'><li data-type='method'><a href="module-ink_collector-OCollector.html#all">all</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#any">any</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#every">every</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#find">find</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#findKeys">findKeys</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#findOne">findOne</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#findOneKey">findOneKey</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#remove">remove</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#some">some</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#unique">unique</a></li><li data-type='method'><a href="module-ink_collector-OCollector.html#update">update</a></li></ul></li><li><a href="module-mixins_signalable-Signal.html">Signal</a><ul class='methods'><li data-type='method'><a href="module-mixins_signalable-Signal.html#has">has</a></li><li data-type='method'><a href="module-mixins_signalable-Signal.html#off">off</a></li><li data-type='method'><a href="module-mixins_signalable-Signal.html#on">on</a></li><li data-type='method'><a href="module-mixins_signalable-Signal.html#once">once</a></li><li data-type='method'><a href="module-mixins_signalable-Signal.html#toString">toString</a></li></ul></li><li><a href="utils_logger.Logger.html">Logger</a><ul class='methods'><li data-type='method'><a href="utils_logger.Logger.html#all">all</a></li><li data-type='method'><a href="utils_logger.Logger.html#debug">debug</a></li><li data-type='method'><a href="utils_logger.Logger.html#error">error</a></li><li data-type='method'><a href="utils_logger.Logger.html#info">info</a></li><li data-type='method'><a href="utils_logger.Logger.html#level">level</a></li><li data-type='method'><a href="utils_logger.Logger.html#silent">silent</a></li><li data-type='method'><a href="utils_logger.Logger.html#trace">trace</a></li><li data-type='method'><a href="utils_logger.Logger.html#warn">warn</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-base.html">base</a></li><li><a href="module-base_chains.html">base/chains</a></li><li><a href="module-documents_binder.html">documents/binder</a><ul class='methods'><li data-type='method'><a href="module-documents_binder.html#.bind">bind</a></li><li data-type='method'><a href="module-documents_binder.html#.unbind">unbind</a></li></ul></li><li><a href="module-documents_model.html">documents/model</a></li><li><a href="module-documents_probe.html">documents/probe</a><ul class='members'><li data-type='member'><a href="module-documents_probe.html#.delimiter">delimiter</a></li></ul><ul class='methods'><li data-type='method'><a href="module-documents_probe.html#.all">all</a></li><li data-type='method'><a href="module-documents_probe.html#.any">any</a></li><li data-type='method'><a href="module-documents_probe.html#.every">every</a></li><li data-type='method'><a href="module-documents_probe.html#.find">find</a></li><li data-type='method'><a href="module-documents_probe.html#.findKeys">findKeys</a></li><li data-type='method'><a href="module-documents_probe.html#.findOne">findOne</a></li><li data-type='method'><a href="module-documents_probe.html#.findOneKey">findOneKey</a></li><li data-type='method'><a href="module-documents_probe.html#.get">get</a></li><li data-type='method'><a href="module-documents_probe.html#.mixin">mixin</a></li><li data-type='method'><a href="module-documents_probe.html#.proxy">proxy</a></li><li data-type='method'><a href="module-documents_probe.html#.remove">remove</a></li><li data-type='method'><a href="module-documents_probe.html#.set">set</a></li><li data-type='method'><a href="module-documents_probe.html#.some">some</a></li><li data-type='method'><a href="module-documents_probe.html#.unique">unique</a></li><li data-type='method'><a href="module-documents_probe.html#.update">update</a></li></ul></li><li><a href="module-documents_schema.html">documents/schema</a></li><li><a href="module-Formatters.html">Formatters</a><ul class='methods'><li data-type='method'><a href="module-Formatters.html#~separateThounsands">separateThounsands</a></li><li data-type='method'><a href="module-Formatters.html#~toPercentage">toPercentage</a></li></ul></li><li><a href="module-General.html">General</a><ul class='methods'><li data-type='method'><a href="module-General.html#~containNils">containNils</a></li><li data-type='method'><a href="module-General.html#~flow">flow</a></li><li data-type='method'><a href="module-General.html#~formatIfExist">formatIfExist</a></li><li data-type='method'><a href="module-General.html#~isNil">isNil</a></li><li data-type='method'><a href="module-General.html#~isTruthy">isTruthy</a></li><li data-type='method'><a href="module-General.html#~isUndefined">isUndefined</a></li><li data-type='method'><a href="module-General.html#~toFixed">toFixed</a></li></ul></li><li><a href="module-ink_collector.html">ink/collector</a><ul class='methods'><li data-type='method'><a href="module-ink_collector.html#.collect">collect</a></li><li data-type='method'><a href="module-ink_collector.html#~add">add</a></li><li data-type='method'><a href="module-ink_collector.html#~add">add</a></li><li data-type='method'><a href="module-ink_collector.html#~append">append</a></li><li data-type='method'><a href="module-ink_collector.html#~at">at</a></li><li data-type='method'><a href="module-ink_collector.html#~compact">compact</a></li><li data-type='method'><a href="module-ink_collector.html#~countBy">countBy</a></li><li data-type='method'><a href="module-ink_collector.html#~destroy">destroy</a></li><li data-type='method'><a href="module-ink_collector.html#~each">each</a></li><li data-type='method'><a href="module-ink_collector.html#~flatten">flatten</a></li><li data-type='method'><a href="module-ink_collector.html#~groupBy">groupBy</a></li><li data-type='method'><a href="module-ink_collector.html#~index">index</a></li><li data-type='method'><a href="module-ink_collector.html#~key">key</a></li><li data-type='method'><a href="module-ink_collector.html#~map">map</a></li><li data-type='method'><a href="module-ink_collector.html#~max">max</a></li><li data-type='method'><a href="module-ink_collector.html#~min">min</a></li><li data-type='method'><a href="module-ink_collector.html#~pluck">pluck</a></li><li data-type='method'><a href="module-ink_collector.html#~push">push</a></li><li data-type='method'><a href="module-ink_collector.html#~reduce">reduce</a></li><li data-type='method'><a href="module-ink_collector.html#~sortBy">sortBy</a></li><li data-type='method'><a href="module-ink_collector.html#~toArray">toArray</a></li><li data-type='method'><a href="module-ink_collector.html#~toJSON">toJSON</a></li></ul></li><li><a href="module-mixins_bussable.html">mixins/bussable</a></li><li><a href="module-mixins_signalable.html">mixins/signalable</a></li><li><a href="module-Strings.html">Strings</a><ul class='methods'><li data-type='method'><a href="module-Strings.html#~addPostfix">addPostfix</a></li><li data-type='method'><a href="module-Strings.html#~addPrefix">addPrefix</a></li><li data-type='method'><a href="module-Strings.html#~capitalize">capitalize</a></li><li data-type='method'><a href="module-Strings.html#~leftpad">leftpad</a></li><li data-type='method'><a href="module-Strings.html#~separate">separate</a></li></ul></li><li><a href="module-strings_format.html">strings/format</a></li><li><a href="module-utils_logger.html">utils/logger</a><ul class='members'><li data-type='member'><a href="module-utils_logger.html#.utils/logger">utils/logger</a></li></ul></li></ul><h3>Mixins</h3><ul><li><a href="documents_schema.html">documents/schema</a><ul class='methods'><li data-type='method'><a href="documents_schema.html#addCheck">addCheck</a></li><li data-type='method'><a href="documents_schema.html#addFormat">addFormat</a></li><li data-type='method'><a href="documents_schema.html#addType">addType</a></li><li data-type='method'><a href="documents_schema.html#addTypeCoercion">addTypeCoercion</a></li><li data-type='method'><a href="documents_schema.html#defaultDoc">defaultDoc</a></li><li data-type='method'><a href="documents_schema.html#extract">extract</a></li><li data-type='method'><a href="documents_schema.html#extract">extract</a></li><li data-type='method'><a href="documents_schema.html#getSchema">getSchema</a></li><li data-type='method'><a href="documents_schema.html#registerSchemas">registerSchemas</a></li><li data-type='method'><a href="documents_schema.html#validate">validate</a></li></ul></li><li><a href="mixins_bussable.html">mixins/bussable</a><ul class='methods'><li data-type='method'><a href="mixins_bussable.html#getSubscription">getSubscription</a></li><li data-type='method'><a href="mixins_bussable.html#once">once</a></li><li data-type='method'><a href="mixins_bussable.html#publish">publish</a></li><li data-type='method'><a href="mixins_bussable.html#subscribe">subscribe</a></li></ul></li><li><a href="mixins_signalable.html">mixins/signalable</a><ul class='methods'><li data-type='method'><a href="mixins_signalable.html#refreshSignals">refreshSignals</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#buildNav">buildNav</a></li><li><a href="global.html#crypto">crypto</a></li><li><a href="global.html#downloadImage">downloadImage</a></li><li><a href="global.html#existsInS3">existsInS3</a></li><li><a href="global.html#publish">publish</a></li><li><a href="global.html#signGoogleMapsURL">signGoogleMapsURL</a></li><li><a href="global.html#signS3Object">signS3Object</a></li><li><a href="global.html#uploadToS3">uploadToS3</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">queryOperators</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="module-documents_probe.html">documents/probe</a>.</span>
+        
+        queryOperators
+        </h2>
+        
+            <div class="class-description"><p>This is not actually a class, but an artifact of the documentation system</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="queryOperators"><span class="type-signature"></span>new queryOperators<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>These are the supported query operators</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".$all"><span class="type-signature">(static) </span>$all<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$all</code> checks to see if all of the members of the query are included in an array
+<code>{array: {$all: [val1, val2, val3]}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"categories" : {$all : ["cat4", "cat2", "cat1"]}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$and"><span class="type-signature">(static) </span>$and<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns true if all of the conditions of the query are met
+<code>{$and: [query1, query2, query3]}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {$and : [     {"name.first" : "Mildred"},     {"name.last" : "Graves"}]} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$elemMatch"><span class="type-signature">(static) </span>$elemMatch<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>This is like $all except that it works with an array of objects or value. It checks to see the array matches all
+of the conditions of the query
+<code>{array: {$elemMatch: {path: value, path: {$operation: value2}}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {attr : {$elemMatch : [ {color : "red", "hand" : "left"}]}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$eq"><span class="type-signature">(static) </span>$eq<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$eq</code> performs a <code>===</code> comparison by comparing the value directly if it is an atomic value.
+otherwise if it is an array, it checks to see if the value looked for is in the array.
+<code>{field: value}</code> or <code>{field: {$eq : value}}</code> or <code>{array: value}</code> or <code>{array: {$eq : value}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {categories : "cat1"} );// is the same asprobe.find( data, {categories : {$eq: "cat1"}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$exists"><span class="type-signature">(static) </span>$exists<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$exists</code> Sees if a field exists.
+<code>{field: {$exists: true|false}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"name.middle" : {$exists : true}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$gt"><span class="type-signature">(static) </span>$gt<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$gt</code> Sees if a field is greater than the value
+<code>{field: {$gt: value}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"age" : {$gt : 24}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$gte"><span class="type-signature">(static) </span>$gte<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$gte</code> Sees if a field is greater than or equal to the value
+<code>{field: {$gte: value}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"age" : {$gte : 50}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$in"><span class="type-signature">(static) </span>$in<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$in</code> Sees if a field has one of the values in the query
+<code>{field: {$in: [test1, test2, test3,...]}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"age" : {$in : [24, 28, 60]}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$lt"><span class="type-signature">(static) </span>$lt<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$lt</code> Sees if a field is less than the value
+<code>{field: {$lt: value}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"age" : {$lt : 24}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$lte"><span class="type-signature">(static) </span>$lte<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$lte</code> Sees if a field is less than or equal to the value
+<code>{field: {$lte: value}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"age" : {$lte : 50}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$mod"><span class="type-signature">(static) </span>$mod<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Checks equality to a modulus operation on a field
+<code>{field: {$mod: [divisor, remainder]}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"age" : {$mod : [2, 0]}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$ne"><span class="type-signature">(static) </span>$ne<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$ne</code> performs a <code>!==</code> comparison by comparing the value directly if it is an atomic value. Otherwise, if it is an array
+this is performs a &quot;not in array&quot;.
+'{field: {$ne : value}}<code>or '{array: {$ne : value}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"name.first" : {$ne : "Sheryl"}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$nin"><span class="type-signature">(static) </span>$nin<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p><code>$nin</code> Sees if a field has none of the values in the query
+<code>{field: {$nin: [test1, test2, test3,...]}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"age" : {$nin : [24, 28, 60]}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$nor"><span class="type-signature">(static) </span>$nor<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns true if none of the conditions of the query are met
+<code>{$nor: [query1, query2, query3]}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {$nor : [     {"age" : {$in : [24, 28, 60]}},     {categories : "cat1"}]} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$not"><span class="type-signature">(static) </span>$not<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Logical NOT on the conditions of the query
+<code>{$not: [query1, query2, query3]}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {$not : {"age" : {$lt : 24}}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$or"><span class="type-signature">(static) </span>$or<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns true if any of the conditions of the query are met
+<code>{$or: [query1, query2, query3]}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {$or : [     "age" : {$in : [24, 28, 60]}},     {categories : "cat1"}]} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$regex"><span class="type-signature">(static) </span>$regex<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Performs a regular expression test againts the field
+<code>{field: {$regex: re, $options: reOptions}}</code></p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {"name.first" : {$regex : "m*", $options : "i"}} );</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".$size"><span class="type-signature">(static) </span>$size<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Compares the size of the field/array to the query. This can be used on arrays, strings and objects (where it will count keys)
+<code>{'field|array</code>: {$size: value}}`</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var probe = require("documents/probe");probe.find( data, {attr : {$size : 3}} );</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jun 19 2018 12:40:14 GMT-0500 (CDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

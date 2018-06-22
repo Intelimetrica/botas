@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Formatters - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-Time-Clock.html">Clock</a></li></ul><h3>Modules</h3><ul><li><a href="module-Formatters.html">Formatters</a><ul class='methods'><li data-type='method'><a href="module-Formatters.html#~separateThousands">separateThousands</a></li><li data-type='method'><a href="module-Formatters.html#~toPercentage">toPercentage</a></li></ul></li><li><a href="module-General.html">General</a><ul class='methods'><li data-type='method'><a href="module-General.html#~containNils">containNils</a></li><li data-type='method'><a href="module-General.html#~flow">flow</a></li><li data-type='method'><a href="module-General.html#~formatIfExist">formatIfExist</a></li><li data-type='method'><a href="module-General.html#~isNil">isNil</a></li><li data-type='method'><a href="module-General.html#~isTruthy">isTruthy</a></li><li data-type='method'><a href="module-General.html#~isUndefined">isUndefined</a></li><li data-type='method'><a href="module-General.html#~toFixed">toFixed</a></li></ul></li><li><a href="module-Scripts.html">Scripts</a><ul class='methods'><li data-type='method'><a href="module-Scripts.html#.downloadImage">downloadImage</a></li><li data-type='method'><a href="module-Scripts.html#.fluentPromise">fluentPromise</a></li><li data-type='method'><a href="module-Scripts.html#.signGoogleMapsURL">signGoogleMapsURL</a></li><li data-type='method'><a href="module-Scripts.html#.signS3Object">signS3Object</a></li><li data-type='method'><a href="module-Scripts.html#.uploadToS3">uploadToS3</a></li><li data-type='method'><a href="module-Scripts.html#~existsInS3">existsInS3</a></li></ul></li><li><a href="module-Strings.html">Strings</a><ul class='methods'><li data-type='method'><a href="module-Strings.html#~addPostfix">addPostfix</a></li><li data-type='method'><a href="module-Strings.html#~addPrefix">addPrefix</a></li><li data-type='method'><a href="module-Strings.html#~capitalize">capitalize</a></li><li data-type='method'><a href="module-Strings.html#~leftpad">leftpad</a></li><li data-type='method'><a href="module-Strings.html#~separate">separate</a></li></ul></li><li><a href="module-Time.html">Time</a><ul class='methods'><li data-type='method'><a href="module-Time.html#~dateBasedSerial">dateBasedSerial</a></li><li data-type='method'><a href="module-Time.html#~dateSpread">dateSpread</a></li><li data-type='method'><a href="module-Time.html#~firstDayOfYear">firstDayOfYear</a></li><li data-type='method'><a href="module-Time.html#~formatDateRange">formatDateRange</a></li><li data-type='method'><a href="module-Time.html#~formatDateYYYY_MM_DD">formatDateYYYY_MM_DD</a></li><li data-type='method'><a href="module-Time.html#~formatDayMonthYear">formatDayMonthYear</a></li><li data-type='method'><a href="module-Time.html#~formatDayMonthYearShort">formatDayMonthYearShort</a></li><li data-type='method'><a href="module-Time.html#~getDaysOfMonth">getDaysOfMonth</a></li><li data-type='method'><a href="module-Time.html#~getUTCDate">getUTCDate</a></li><li data-type='method'><a href="module-Time.html#~isDate">isDate</a></li><li data-type='method'><a href="module-Time.html#~monthRange">monthRange</a></li><li data-type='method'><a href="module-Time.html#~yesterday">yesterday</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Formatters</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Formatter Utilities module.</p>
+<p>Common formatters that we use across different projects. Note that many methods
+in this module use methods from other modules.</p></div>
+        
+
+        
+            
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="~separateThousands"><span class="type-signature">(inner) </span>separateThousands<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Separate input from right to left in buckets of 3 digits using commas.
+Useful to format prices.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>separateThousands(12000); //=>'12,000'
+separateThousands('1250000'); //=> '1,250,000'</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Input that will be separated with commas every 3 elements</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="~toPercentage"><span class="type-signature">(inner) </span>toPercentage<span class="signature">(value, decimal_points)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Run a pipeline of formatters to transform a ranged 0 to 1 number into a
+readable percentage.
+The output would look like <code>XX.XX %</code></p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>toPercentage(0.67489); //=> '67.49 %'
+toPercentage(0.67439, 1); //=> '67.4 %'</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Floating precision number to transform into percentage</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>decimal_points</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    <code>2</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Floating points to take in the final format</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jun 22 2018 15:53:31 GMT-0500 (CDT) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
