@@ -1,7 +1,7 @@
 const formatters = require('./index');
 /*
 module.exports = {
-  separateThounsands,
+  separateThousands,
   toPercentage
 }
 */
@@ -34,24 +34,24 @@ describe("Testing formatters", () => {
     });
   });
 
-  describe("separateThounsands()", () => {
-    const { separateThounsands } = formatters;
+  describe("separateThousands()", () => {
+    const { separateThousands } = formatters;
     it("separate numbers with commas every 1000", () => {
-      expect(separateThounsands(1)).toEqual("1");
-      expect(separateThounsands(10)).toEqual("10");
-      expect(separateThounsands(100)).toEqual("100");
-      expect(separateThounsands(1000)).toEqual("1,000");
-      expect(separateThounsands(10000)).toEqual("10,000");
-      expect(separateThounsands(100000)).toEqual("100,000");
-      expect(separateThounsands(1000000)).toEqual("1,000,000");
-      expect(separateThounsands(10000000)).toEqual("10,000,000");
+      expect(separateThousands(1)).toEqual("1");
+      expect(separateThousands(10)).toEqual("10");
+      expect(separateThousands(100)).toEqual("100");
+      expect(separateThousands(1000)).toEqual("1,000");
+      expect(separateThousands(10000)).toEqual("10,000");
+      expect(separateThousands(100000)).toEqual("100,000");
+      expect(separateThousands(1000000)).toEqual("1,000,000");
+      expect(separateThousands(10000000)).toEqual("10,000,000");
     });
 
     it("works with strings also", () => { // so be careful with floats or non numeric strings
-      expect(separateThounsands("1000000")).toEqual("1,000,000");
-      expect(separateThounsands("10000000")).toEqual("10,000,000");
-      expect(separateThounsands("hola")).toEqual("h,ola");
-      expect(separateThounsands("0.123456")).toEqual("0.,123,456");
+      expect(separateThousands("1000000")).toEqual("1,000,000");
+      expect(separateThousands("10000000")).toEqual("10,000,000");
+      expect(separateThousands("hola")).toEqual("h,ola");
+      expect(separateThousands("0.123456")).toEqual("0.,123,456");
     });
   })
 });

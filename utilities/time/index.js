@@ -47,75 +47,26 @@ const WEEKDAYS_SHORT = {
 
 /* ---end of members--- */
 
-/**
- * Validates that an input is instance of Date
- *
- * @param {*} date - Element to check if is instance of Date
- * @returns {boolean}
- */
-const isDate = date => date instanceof Date;
 
 /**
- * Give the count of how many days a month has. Supports leap-years
+ * Concatenates Year, Month, Day, Hour and Mins into a string to form a current time serial
  *
  * @example
- * getDaysOfMonth()
+ * dateBasedSerial(new Date(2018, 1, 2, 3, 4)); //=> '201802020304'
  *
- * @param {Date} date - Date
- * @returns {number}
+ * @param {Date} [date] - Date to form serial or current date by default
+ * @returns {string}
  */
-function getDaysOfMonth(date = new Date()) {
-  if (!isDate(date)) date = new Date(date);
-
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  return 32 - new Date(year, month, 32).getDate();
-};
-
-const monthRange = (date = new Date()) => {
-  let [year, month] = dateSpread(getUTFDate(date), false);
-  let [_year, padded_month, lday] = dateSpread(
-    getUTFDate(new Date(year, month, 0)),
-    true
-  );
-
-  return {
-    from: `${year}-${padded_month}-01`,
-    to: `${year}-${padded_month}-${lday}`
-  };
-}
-
-const formatDayMonthYear = (date = new Date(), locale='mx') => {
-  let [year, month, day] = dateSpread(getUTFDate(date), false);
-  return `${day} de ${MONTHS[locale][month-1]} ${year}`;
-}
-
-const formatDayMonthYearShort = (date = new Date(), locale='mx') => {
-  let [year, month, day] = dateSpread(getUTFDate(date), false);
-  return `${day} ${MONTHS_SHORT[locale][month-1]} ${year % 100}`;
-}
-
-function formatDateRange(date) {
-  let fecha_gte = new Date(date.fecha_gte.replace(/-/g, '\/')); //lowest
-  let fecha_lte = new Date(date.fecha_lte.replace(/-/g, '\/')); //highest
-
-  if(fecha_gte.getMonth() === fecha_lte.getMonth()) {
-    if((fecha_gte.getDate() === 1) && (fecha_lte.getDate() === getDaysOfMonth(fecha_gte))) {
-      return `${MONTHS_SHORT.mx[fecha_gte.getMonth()]} ${fecha_gte.getFullYear()}`
-    } else {
-      return `${fecha_gte.getDate()} - ${fecha_lte.getDate()} ${MONTHS_SHORT.mx[fecha_gte.getMonth()]} ${fecha_gte.getFullYear()}`;
-    }
-  } else {
-    return `${fecha_gte.getDate()} ${MONTHS_SHORT.mx[fecha_gte.getMonth()]} - ${fecha_lte.getDate()} ${MONTHS_SHORT.mx[fecha_lte.getMonth()]} ${fecha_lte.getFullYear()}`;
-
-    return `${fecha_gte.getDate()} ${MONTHS_SHORT.mx[fecha_gte.getMonth()]} - ${fecha_lte.getDate()} ${MONTHS_SHORT.mx[fecha_lte.getMonth()]} ${fecha_lte.getFullYear()}`;
-  }
-};
+const dateBasedSerial = (date = new Date()) =>
+  dateSpread(date).reduce((acc, e) => `${acc}${e}`, "");
 
 /**
  * Array representation of a date: [YYYY, MM, DD, HH, mm]
  *
- * @param {Date} date - Instance of Date. If not provided, date will be Date.now()
+ * @example
+ * dateSpread(new Date(2018, 1, 2, 3, 4)); //=> ['2018', '02', '02', '03', '04']
+ *
+ * @param {Date} [date] - Instance of Date. If not provided, date will be Date.now()
  * @param {boolean} [padded] - Defines if response will be padded with zeroes
  * @returns {Array}
  */
@@ -127,41 +78,179 @@ const dateSpread = (date = new Date(), padded=true) => [
   leftpad(padded ? 2 : 0,0,date.getMinutes()),
 ];
 
-const formatDateYYYYMMDD = (date) => {
+/**
+ * First date of year in YYYY-MM-DD format
+ *
+ * @example
+ * firstDayOfYear(new Date(2018, 1, 2, 3, 4)); //=> '2018-01-01'
+ *
+ * @param {Date} [date] - Instance of Date. If not provided, date will be Date.now()
+ * @returns {string}
+ */
+const firstDayOfYear = (date = new Date()) => {
+  return `${date.getFullYear()}-01-01`;
+};
+
+/**
+ * Transform a date range into a readable format
+ *
+ * @example
+ * formatDateRange("2018-03-01", "2018-03-31"); //=> "Mar 2018"
+ * formatDateRange("2018-03-01", "2018-03-17"); //=> "1 - 17 Mar 2018"
+ * formatDateRange("2018-02-23", "2018-03-17"); //=> "23 Feb - 17 Mar 2018"
+ * formatDateRange("2017-12-20", "2018-01-10"); //=> "20 Dic - 10 Ene 2018"
+ *
+ * @param {string} date_gte - Lowest date of range in YYYY-MM-DD format
+ * @param {string} date_lte - Highest date of range in YYYY-MM-DD format
+ * @returns {string}
+ */
+const formatDateRange = (date_gte, date_lte) => {
+  let d_gte = new Date(date_gte.replace(/-/g, '\/')); //lowest
+  let d_lte = new Date(date_lte.replace(/-/g, '\/')); //highest
+
+  if(d_gte.getMonth() === d_lte.getMonth()) {
+    if((d_gte.getDate() === 1) && (d_lte.getDate() === getDaysOfMonth(d_gte))) {
+      return `${MONTHS_SHORT.mx[d_gte.getMonth()]} ${d_gte.getFullYear()}`;
+    } else {
+      return `${d_gte.getDate()} - ${d_lte.getDate()} ${MONTHS_SHORT.mx[d_gte.getMonth()]} ${d_gte.getFullYear()}`;
+    }
+  } else {
+    return `${d_gte.getDate()} ${MONTHS_SHORT.mx[d_gte.getMonth()]} - ${d_lte.getDate()} ${MONTHS_SHORT.mx[d_lte.getMonth()]} ${d_lte.getFullYear()}`;
+  }
+};
+
+/**
+ * Formats a date into a YYYY-MM-DD string
+ *
+ * @example
+ * formatDateYYYY_MM_DD(new Date(2018, 1, 2, 3, 4)); //=> '2018-02-02'
+ *
+ * @param {Date} [date] - Date. If not provided, `Date.now()`
+ * @returns {string}
+ */
+const formatDateYYYY_MM_DD = (date = new Date()) => {
   const [year, month, day] = dateSpread(date);
   return `${year}-${month}-${day}`;
 }
 
+/**
+ * Formats a date into a `DD de MMMM YYYY` readable string
+ *
+ * @example
+ * formatDateYYYY_MM_DD(new Date(2018, 1, 2, 3, 4)); //=> '02 de Febrero 2018'
+ *
+ * @param {Date} [date] - Date. If not provided, `Date.now()`
+ * @param {string} [locale] - Locality string. `mx` by default
+ * @returns {string}
+ */
+const formatDayMonthYear = (date = new Date(), locale='mx') => {
+  let [year, month, day] = dateSpread(date, false);
+  return `${day} de ${MONTHS[locale][month-1]} ${year}`;
+}
+
+/**
+ * Formats a date into a `DD de MMM YY` readable string
+ *
+ * @example
+ * formatDateYYYY_MM_DD(new Date(2018, 1, 2, 3, 4)); //=> '02 Feb 18'
+ *
+ * @param {Date} [date] - Date. If not provided, `Date.now()`
+ * @param {string} [locale] - Locality string. `mx` by default
+ * @returns {string}
+ */
+const formatDayMonthYearShort = (date = new Date(), locale='mx') => {
+  let [year, month, day] = dateSpread(date, false);
+  return `${day} ${MONTHS_SHORT[locale][month-1]} ${year % 100}`;
+}
+
+/**
+ * Give the count of how many days a month has. Supports leap-years
+ *
+ * @example
+ * getDaysOfMonth(new Date(2018, 1, 2, 3, 4)); //=> 28
+ *
+ * @param {Date} [date] - Date. If not provided, `Date.now()`
+ * @returns {number}
+ */
+const getDaysOfMonth = (date = new Date()) => {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  return 32 - new Date(year, month, 32).getDate();
+};
+
+/**
+ *  Get Coordinated Universal Time
+ *  - Why I might want to use this? `new Date()` adds a timezone offset. So `new Date('2018','01','01'); //=> 2018-02-01T06:00:00.000Z`.
+ *  - Notice the 6 hours added in the result? That is the timezone. To avoid this, we can use UTC format. Hence, this function.
+ *
+ * @param {Date} date - Instance of `Date`
+ * @returns {Date}
+ */
+const getUTCDate = (date) => {
+  let [year, month, ...rest] = dateSpread(date);
+  return new Date(Date.UTC(year, month-1, ...rest));
+}
+
+/**
+ * Validates that an input is instance of Date
+ *
+ * @example
+ * isDate(new Date()); //=> true
+ *
+ * @param {*} date - Element to check if is instance of Date
+ * @returns {boolean}
+ */
+const isDate = date => date instanceof Date;
+
+/**
+ * Generates the date_range of the month given in date
+ *
+ * @example
+ * monthRange(new Date('2018', '06')); //=> {from: '2018-05-01', to: '2018-05-31'}
+ *
+ * @param {Date} [date] - Instance of `Date`. Date.now() if not provided
+ * @returns {Object}
+ */
+const monthRange = (date = new Date()) => {
+  let [year, month] = dateSpread(date, false);
+  let [_year, padded_month, lday] = dateSpread(new Date(year, month, 0));
+
+  return {
+    from: `${year}-${padded_month}-01`,
+    to: `${year}-${padded_month}-${lday}`
+  };
+}
+
+/**
+ * Generates the `Date` of yesterday ¯\\\_(ツ)\_/¯
+ *
+ * @returns {Date}
+ */
 const yesterday = () => {
   let a_day_before = new Date();
   a_day_before.setDate(a_day_before.getDate() - 1);
 
-  return formatDateYYYYMMDD(a_day_before);
+  return a_day_before;
 };
 
-const firstDayOfYear = () => {
-  const now = new Date();
-  return `2017-09-01`;
-  return `${now.getFullYear()}-01-01`;
-};
-
-const getUTFDate = (date) => {
-  date = new Date(date);
-  return new Date(date.getTime() + date.getTimezoneOffset()*60*1000);
-};
-
-const dateBasedSerial = () =>
-  dateSpread().reduce((acc, e) => `${acc}${e}`, "");
 
 /**
- * Clock
- * constructor = time in float format
- * example:
- * new Clock(37.32454);
- * Clock { time: 37.32454, hours: 37, minutes: 19, seconds: 28 }
+ * Clock class to transform a `float` represented time into different formats
+ *
+ * @class
+ *
+ * @example
+ * let clock = new Clock(37.32454);
+ * //=> clock = Clock { time: 37.32454, hours: 37, minutes: 19, seconds: 28 }
+ * clock.hh_mm_ss(); //=> 37:19:28
+ * clock.verbose_hrs_min(); //=> 37h 19m
+ * clock.verbose_hrs_min_secs(); //=> 37h 19m 28s
+ *
+ * @param {number} - Float number representing a time
+ * @return {Clock}
  * */
 class Clock {
-  constructor(time=Date.now()) {
+  constructor(time=0) {
     this.time = time;
     this.hours = Math.floor(this.time);
     this.minutes = Math.floor((this.time % 1) * 60);
@@ -169,7 +258,7 @@ class Clock {
   }
 
   hh_mm_ss() {
-    const hh = this.hours;
+    const hh = leftpad(2, "0", this.hours);
     const mm = leftpad(2, "0", this.minutes);
     const ss = leftpad(2, "0", this.seconds);
 
@@ -203,11 +292,11 @@ module.exports = {
   dateSpread,
   firstDayOfYear,
   formatDateRange,
-  formatDateYYYYMMDD,
+  formatDateYYYY_MM_DD,
   formatDayMonthYear,
   formatDayMonthYearShort,
   getDaysOfMonth,
-  getUTFDate,
+  getUTCDate,
   isDate,
   monthRange,
   yesterday,
