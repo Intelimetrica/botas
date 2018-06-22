@@ -29,6 +29,9 @@ const { uploadToS3 } = require('botas/scripts');
 // or using ES6
 const { uploadToS3 } from 'botas/scripts';
 ```
+### Documentation
+<a href="https://intelimetrica.github.io/botas/">Docs</a>
+
 ### How is the library organized?
 Botas has utilities and random scripts
 
