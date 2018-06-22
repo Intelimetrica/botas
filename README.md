@@ -38,5 +38,3 @@ Utilities is divided in 4 areas. `Formatters`, `General`, `String`, `Time`.
 Random scripts are just that, random scripts.
 - This meaning that `Scripts` are not exposed in the root of the library
 
-
-
