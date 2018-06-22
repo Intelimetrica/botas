@@ -1,42 +1,36 @@
 'use strict'
 
 const AWS = require("aws-sdk");
-const fs = require("fs");
-
-const format_params = (params, content) => {
-  if (!params.Bucket || !params.Key) return false;
-
-  return {
-    Bucket: params.Bucket,
-    Key: params.Key, // Filename with extension
-    Body: content,
-    ACL: params.ACL || "private"
-  }
-};
-
 
 /**
- * uploadToS3
+ * Uploads a file S3.
+ * In order to use this method you should have AWS_ACCESS_KEY_ID and
+ * AWS_SECRET_ACCESS_KEY env variables set in the process.env
  *
- * @param params = {
- *   +Bucket: S3 Bucket name,
- *   +Key: Filename WITH extension,
- *   -ACL: File permissions. If not provided will be set to private,
- *   +region: AWS REGION
- * }
- * @param content = File content
+ * @memberof module:Scripts
+ * @param {string} filename - Filename of Object to be uploaded. Must contain extension.
+ * @param {Binary} content - File content in a Binary string.
+ * @param {string} permission - Object's permission. "private" by default. Available options private | public-read | public-read-write | authenticated-read | aws-exec-read | bucket-owner-read | bucket-owner-full-control
+ * @param {string} AWS_region - Bucket's AWS region. https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
+ * @param {string} AWS_bucket - AWS Bucket name.
+ *
  * @returns {Promise}
  */
-const uploadToS3 = (params, content) => {
+const uploadToS3 = (filename, content, permission="private", AWS_region, AWS_bucket) => {
   if (!content) return Promise.reject("Content cannot be empty");
-  if (!params.region) return Promise.reject("AWS REGION is required");
+  if (!AWS_region) return Promise.reject("AWS REGION is required");
+  if (!AWS_bucket || !filename) return Promise.reject("AWS_bucket and filename cannot be empty");
 
-  const params_formatted = format_params(params, content);
-  if (!params_formatted) return Promise.reject("S3 Params missing");
+  let params = {
+    Key: filename,
+    ACL: permission,
+    Body: content,
+    Bucket: AWS_bucket
+  };
 
-  const s3 = new AWS.S3({region: params.region});
+  const s3 = new AWS.S3({region: AWS_region});
 
-  return s3.putObject(params_formatted).promise();
+  return s3.putObject(params).promise();
 }
 
 module.exports = uploadToS3;

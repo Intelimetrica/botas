@@ -1,48 +1,38 @@
 'use strict'
 
+/**
+ * Random scripts
+ * @module Scripts
+ */
 const AWS = require("aws-sdk");
-const fs = require("fs");
-
-const format_params = (params, content) => {
-  if (!params.Bucket || !params.Key) return false;
-
-  return {
-    Bucket: params.Bucket,
-    Key: params.Key // Filename with extension
-  }
-};
-
 
 /**
- * uploadToS3
+ * Checks if a file exists in S3.
+ * In order to use this method you should have AWS_ACCESS_KEY_ID and
+ * AWS_SECRET_ACCESS_KEY env variables set in the process.env
  *
- * @param params = {
- *   +Bucket: S3 Bucket name,
- *   +Key: Filename WITH extension,
- *   -ACL: File permissions. If not provided will be set to private,
- *   +region: AWS REGION
- * }
- * @param content = File content
+ * @param {string} filename - Filename of Object to be checked. Must contain extension.
+ * @param {string} AWS_region - Bucket's AWS region. https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
+ * @param {string} AWS_bucket - AWS Bucket name.
+ *
  * @returns {Promise}
  */
-const existsInS3 = (params) => {
-  if (!params.region) return Promise.reject("AWS REGION is required");
-  if (!params.Bucket) return Promise.reject("AWS Bucket is required");
-  if (!params.Key) return Promise.reject("AWS Key is required");
+const existsInS3 = (filename, AWS_region, AWS_bucket) => {
+  if (!AWS_region) return Promise.reject("AWS REGION is required");
+  if (!AWS_bucket) return Promise.reject("AWS Bucket is required");
+  if (!filename) return Promise.reject("filename with extension is required");
 
-  const s3 = new AWS.S3({region: params.region});
+  const s3 = new AWS.S3({region: AWS_region});
 
   return s3.headObject({
-    Bucket: params.Bucket,
-    Key: params.Key
+    Bucket: AWS_bucket,
+    Key: filename
   }, (err, meta) => {
     if (err && err.code === "NotFound") {
-      //console.log(err)
-      console.log(`${params.Key} Key does not exist in Bucket`)
+      console.log(`${filename} Key does not exist in Bucket`)
       return false;
     } else {
-      console.log(`${params.Key} found`)
-      //console.log(meta);
+      console.log(`${filename} found`)
       return true;
     }
   });

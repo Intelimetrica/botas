@@ -6,9 +6,9 @@ const axios = require('axios');
 /**
  * downloadImage
  *
- * @param url
- * @param file_path = complete path to final filename
- *    like ~/home/user/Documents/project/download.png
+ * @memberof module:Scripts
+ * @param {string} url - Url of image to download
+ * @param {string} file_path - Complete path to final filename, for example: ~/home/user/Documents/project/download.png
  * @returns {Promise}
  */
 async function downloadImage(url, file_path) {
