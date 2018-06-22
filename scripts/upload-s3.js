@@ -1,7 +1,3 @@
-/**
- * Random scripts
- * @module Scripts
- */
 'use strict'
 
 const AWS = require("aws-sdk");
@@ -11,6 +7,7 @@ const AWS = require("aws-sdk");
  * In order to use this method you should have AWS_ACCESS_KEY_ID and
  * AWS_SECRET_ACCESS_KEY env variables set in the process.env
  *
+ * @memberof module:Scripts
  * @param {string} filename - Filename of Object to be uploaded. Must contain extension.
  * @param {Binary} content - File content in a Binary string.
  * @param {string} permission - Object's permission. "private" by default. Available options private | public-read | public-read-write | authenticated-read | aws-exec-read | bucket-owner-read | bucket-owner-full-control
