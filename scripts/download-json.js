@@ -11,7 +11,7 @@
  *
  * @param {object} Object - Object that will be downloaded as JSON
  * Example:
- *  <a href={getJSONDownloadString(object)} download={`${your_name}.json`}>
+ *  <a href={getJSONDownloadString(object)} download={`${fileName}.json`}>
  *    Download JSON
  *  </a>
  * @returns {string}
