@@ -26,7 +26,7 @@
     "axios": "~0.18.0"
   },
   "devDependencies": {
-    "docdash": "0.4.0",
+    "docdash_im_fork": "0.4.0",
     "jest": "^23.0.1",
     "jsdoc": "~3.5.5"
   }
