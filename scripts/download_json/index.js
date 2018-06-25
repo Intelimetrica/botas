@@ -17,7 +17,7 @@
  * @returns {string}
  */
 const getJSONDownloadString = (object) => {
-  const formatedObject = encodeURIComponent(JSON.stringify(object));
+  const formattedObject = encodeURIComponent(JSON.stringify(object));
   return `data:text/json;charset=utf-8,${formattedObject}`;
 }
 
