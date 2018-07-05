@@ -4,9 +4,9 @@ const string = require('./utilities/string');
 //TODO: write documentation and tests for time
 const time = require('./utilities/time');
 
-module.exports = {
-  ...formatters,
-  ...general,
-  ...string,
-  ...time
-};
+module.exports = Object.assign({},
+  formatters,
+  general,
+  string,
+  time
+);
