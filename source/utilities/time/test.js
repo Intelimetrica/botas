@@ -173,7 +173,7 @@ describe("Testing time utilities", () => {
 
   describe("formatMonthYearShort()", () => {
     const {formatMonthYearShort} = util;
-    it("Generates a DD de MMM YY format", () => {
+    it("Generates a MMM YY format", () => {
       expect(formatMonthYearShort(DATE)).toEqual('Jun 18');
       expect(formatMonthYearShort(new Date('2018-02-17T10:10:10'))).toEqual('Feb 18');
 
