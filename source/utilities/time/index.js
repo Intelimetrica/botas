@@ -137,7 +137,7 @@ const formatDateYYYY_MM_DD = (date = new Date()) => {
  * Formats a date into a `DD de MMMM YYYY` readable string
  *
  * @example
- * formatDateYYYY_MM_DD(new Date(2018, 1, 2, 3, 4)); //=> '02 de Febrero 2018'
+ * formatDayMonthYear(new Date(2018, 1, 2, 3, 4)); //=> '02 de Febrero 2018'
  *
  * @param {Date} [date] - Date. If not provided, `Date.now()`
  * @param {string} [locale] - Locality string. `mx` by default
@@ -152,7 +152,7 @@ const formatDayMonthYear = (date = new Date(), locale='mx') => {
  * Formats a date into a `DD de MMM YY` readable string
  *
  * @example
- * formatDateYYYY_MM_DD(new Date(2018, 1, 2, 3, 4)); //=> '02 Feb 18'
+ * formatDayMonthYearShort(new Date(2018, 1, 2, 3, 4)); //=> '02 Feb 18'
  *
  * @param {Date} [date] - Date. If not provided, `Date.now()`
  * @param {string} [locale] - Locality string. `mx` by default
@@ -161,6 +161,21 @@ const formatDayMonthYear = (date = new Date(), locale='mx') => {
 const formatDayMonthYearShort = (date = new Date(), locale='mx') => {
   let [year, month, day] = dateSpread(date, false);
   return `${day} ${MONTHS_SHORT[locale][month-1]} ${year % 100}`;
+}
+
+/**
+ * Formats a date into a `MMM YY` readable string
+ *
+ * @example
+ * formatMonthYearShort(new Date(2018, 1, 2, 3, 4)); //=> 'Feb 18'
+ *
+ * @param {Date} [date] - Date. If not provided, `Date.now()`
+ * @param {string} [locale] - Locality string. `mx` by default
+ * @returns {string}
+ */
+const formatMonthYearShort = (date = new Date(), locale='mx') => {
+  let [year, month] = dateSpread(date, false);
+  return `${MONTHS_SHORT[locale][month-1]} ${year % 100}`;
 }
 
 /**
@@ -295,6 +310,7 @@ module.exports = {
   formatDateYYYY_MM_DD,
   formatDayMonthYear,
   formatDayMonthYearShort,
+  formatMonthYearShort,
   getDaysOfMonth,
   getUTCDate,
   isDate,

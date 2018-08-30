@@ -14,6 +14,7 @@ module.exports = {
   formatDateYYYYMMDD,
   formatDayMonthYear,
   formatDayMonthYearShort,
+  formatMonthYearShort,
   getDaysOfMonth,
   getUTFDate,
   monthRange,
@@ -30,7 +31,7 @@ describe("Testing time export", () => {
   it('util exports a fixed number of functions', () => {
     //Dear developer, if you are modifying this number, remember to write the corresponding test
     //                                     ▼
-    expect(Object.keys(util)).toHaveLength(17);
+    expect(Object.keys(util)).toHaveLength(18);
   });
 });
 
@@ -167,6 +168,17 @@ describe("Testing time utilities", () => {
 
       mockDate();
       expect(formatDayMonthYearShort()).toEqual('20 Jun 18');
+    });
+  });
+
+  describe("formatMonthYearShort()", () => {
+    const {formatMonthYearShort} = util;
+    it("Generates a DD de MMM YY format", () => {
+      expect(formatMonthYearShort(DATE)).toEqual('Jun 18');
+      expect(formatMonthYearShort(new Date('2018-02-17T10:10:10'))).toEqual('Feb 18');
+
+      mockDate();
+      expect(formatMonthYearShort()).toEqual('Jun 18');
     });
   });
 
