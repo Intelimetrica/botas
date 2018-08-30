@@ -131,7 +131,7 @@ const formatDateRange = (date_gte, date_lte) => {
 const formatDateYYYY_MM_DD = (date = new Date()) => {
   const [year, month, day] = dateSpread(date);
   return `${year}-${month}-${day}`;
-}
+};
 
 /**
  * Formats a date into a `DD de MMMM YYYY` readable string
@@ -146,7 +146,7 @@ const formatDateYYYY_MM_DD = (date = new Date()) => {
 const formatDayMonthYear = (date = new Date(), locale='mx') => {
   let [year, month, day] = dateSpread(date, false);
   return `${day} de ${MONTHS[locale][month-1]} ${year}`;
-}
+};
 
 /**
  * Formats a date into a `DD de MMM YY` readable string
@@ -161,7 +161,7 @@ const formatDayMonthYear = (date = new Date(), locale='mx') => {
 const formatDayMonthYearShort = (date = new Date(), locale='mx') => {
   let [year, month, day] = dateSpread(date, false);
   return `${day} ${MONTHS_SHORT[locale][month-1]} ${year % 100}`;
-}
+};
 
 /**
  * Formats a date into a `MMM YY` readable string
@@ -176,7 +176,7 @@ const formatDayMonthYearShort = (date = new Date(), locale='mx') => {
 const formatMonthYearShort = (date = new Date(), locale='mx') => {
   let [year, month] = dateSpread(date, false);
   return `${MONTHS_SHORT[locale][month-1]} ${year % 100}`;
-}
+};
 
 /**
  * Give the count of how many days a month has. Supports leap-years
@@ -204,7 +204,7 @@ const getDaysOfMonth = (date = new Date()) => {
 const getUTCDate = (date) => {
   let [year, month, ...rest] = dateSpread(date);
   return new Date(Date.UTC(year, month-1, ...rest));
-}
+};
 
 /**
  * Validates that an input is instance of Date
@@ -234,7 +234,7 @@ const monthRange = (date = new Date()) => {
     from: `${year}-${padded_month}-01`,
     to: `${year}-${padded_month}-${lday}`
   };
-}
+};
 
 /**
  * Generates the `Date` of yesterday ¯\\\_(ツ)\_/¯
