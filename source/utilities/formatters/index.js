@@ -21,7 +21,7 @@ const { isInteger }            = Number;
  * separateThousands(-1000); //=> '-1,000'
  * separateThousands(1000.111); //=> '1,000.111'
  *
- * Note that this function won't wor with non numerical values. So expect:
+ * Note that this function won't work with non numerical values. So expect:
  *
  * @example
  * separateThousands("hola"); //> 'hola'
@@ -41,7 +41,7 @@ const separateThousands = value => {
   const floating_points = isInteger(Number(value)) ? '' : `.${("" + value).split(".")[1]}`;
 
   return `${v_sign}${integer}${floating_points}`
-}
+};
 
 /**
  * Run a pipeline of formatters to transform a ranged 0 to 1 number into a
