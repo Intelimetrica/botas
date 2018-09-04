@@ -7,6 +7,9 @@
  */
 const { flow, toFixed, isNil } = require("../general");
 const { addPostfix, separate } = require("../string");
+const { sign, abs }            = Math;
+const { isInteger }            = Number;
+
 
 /**
  * Separate input from right to left in buckets of 3 digits using commas.
@@ -15,13 +18,29 @@ const { addPostfix, separate } = require("../string");
  * @example
  * separateThousands(12000); //=>'12,000'
  * separateThousands('1250000'); //=> '1,250,000'
+ * separateThousands(-1000); //=> '-1,000'
+ * separateThousands(1000.111); //=> '1,000.111'
+ *
+ * Note that this function won't wor with non numerical values. So expect:
+ *
+ * @example
+ * separateThousands("hola"); //> 'hola'
+ * separateThousands("0.123456"); //=> '0.123456'
+ * separateThousands("1000.1234567"); //=> '1,000.1234567'
+ * separateThousands("-100.10000"); //=> '-100.10000'
  *
  * @param {number|string} value - Input that will be separated with commas every 3 elements
  * @returns {string}
  */
 const separateThousands = value => {
   if (isNil(value)) return null;
-  return separate(value, 3, ',', true);
+  if (isNaN(value)) return value;
+
+  const v_sign = (sign(value)<0) ? '-' : '';
+  const integer = separate(parseInt(abs(value)), 3, ',', true);
+  const floating_points = isInteger(Number(value)) ? '' : `.${("" + value).split(".")[1]}`;
+
+  return `${v_sign}${integer}${floating_points}`
 }
 
 /**

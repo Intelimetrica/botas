@@ -47,11 +47,34 @@ describe("Testing formatters", () => {
       expect(separateThousands(10000000)).toEqual("10,000,000");
     });
 
-    it("works with strings also", () => { // so be careful with floats or non numeric strings
+    it("won't work with strings", () => { // so be careful non numeric strings
       expect(separateThousands("1000000")).toEqual("1,000,000");
       expect(separateThousands("10000000")).toEqual("10,000,000");
-      expect(separateThousands("hola")).toEqual("h,ola");
-      expect(separateThousands("0.123456")).toEqual("0.,123,456");
+      expect(separateThousands("hola")).toEqual("hola");
+      expect(separateThousands("0.123456")).toEqual("0.123456");
+      expect(separateThousands("1000.1234567")).toEqual("1,000.1234567");
+      expect(separateThousands("10000.1234567")).toEqual("10,000.1234567");
+    });
+
+    it("handles float numbers", () => {
+      expect(separateThousands(0.1)).toEqual("0.1");
+      expect(separateThousands(10.10)).toEqual("10.1");
+      expect(separateThousands(100.100)).toEqual("100.1");
+      expect(separateThousands(1000.1000)).toEqual("1,000.1");
+      expect(separateThousands(1000.11)).toEqual("1,000.11");
+      expect(separateThousands(1000.111)).toEqual("1,000.111");
+    });
+
+    it("handles negative numbers", () => {
+      expect(separateThousands(-1)).toEqual("-1");
+      expect(separateThousands(-10)).toEqual("-10");
+      expect(separateThousands(-100)).toEqual("-100");
+      expect(separateThousands(-1000)).toEqual("-1,000");
+      expect(separateThousands("-1000000")).toEqual("-1,000,000");
+      expect(separateThousands("-10000000")).toEqual("-10,000,000");
+      expect(separateThousands("-100.10000")).toEqual("-100.10000");
+      expect(separateThousands("-1000.1234567")).toEqual("-1,000.1234567");
+      expect(separateThousands("-10000.1234567")).toEqual("-10,000.1234567");
     });
   })
 });
