@@ -6,7 +6,7 @@
  * @module Formatters
  */
 const { flow, toFixed, isNil } = require("../general");
-const { addPostfix, separate } = require("../string");
+const { addPostfix, separate, capitalize } = require("../string");
 const { sign, abs }            = Math;
 const { isInteger }            = Number;
 
@@ -63,9 +63,31 @@ const toPercentage = (value, decimal_points=2) => flow([
   addPostfix(" %")
 ])(value);
 
+/**
+  * Run a pipeline of formatters to transform a string in snake_case style to camelCase
+  *
+  * @example
+  * snakeToCamelCase('snake_case_string'): //=> 'snakeCaseString'
+  * snakeToCamelCase('snake_case_string', true): //=> 'SnakeCaseString'
+  *
+  * @param {string} value - String in snake case style to be transformed to camel case
+  * @param {boolean} first_letter - Boolean that indicates if the first letter should be capitalized
+  * @returns {string}
+  *
+  */
+const snakeToCamelCase = (value, first_letter=false) => {
+  const pipeline = [
+      word  => word.split('_'),
+      words => words.map((w, index) => !first_letter && index == 0 ? w.toLowerCase() : capitalize(w.toLowerCase())),
+      words => words.join('')
+  ];
+  return flow(pipeline)(value);
+};
+
 //TODO: Add price, area, distance and range formatters
 
 module.exports = {
   separateThousands,
-  toPercentage
+  toPercentage,
+  snakeToCamelCase
 }
