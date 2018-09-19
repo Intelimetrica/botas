@@ -14,7 +14,7 @@ describe("Testing formatters", () => {
   it('formatters exports a fixed number of functions', () => {
     //Dear developer, if you are modifying this number, remember to write the corresponding test
     //                                           ▼
-    expect(Object.keys(formatters)).toHaveLength(4);
+    expect(Object.keys(formatters)).toHaveLength(3);
   });
 
   describe("toPercentage()", () => {
@@ -75,31 +75,6 @@ describe("Testing formatters", () => {
       expect(separateThousands("-100.10000")).toEqual("-100.10000");
       expect(separateThousands("-1000.1234567")).toEqual("-1,000.1234567");
       expect(separateThousands("-10000.1234567")).toEqual("-10,000.1234567");
-    });
-  });
-
-  describe("isVarNameValid()", () => {
-    const { isVarNameValid } = formatters;
-    it("reserved names invalid", () => {
-      expect(isVarNameValid("do")).toEqual(false);
-      expect(isVarNameValid("class")).toEqual(false);
-      expect(isVarNameValid("if")).toEqual(false);
-    });
-
-    it("start with invalid character", () => {
-      expect(isVarNameValid("#$%name")).toEqual(false);
-      expect(isVarNameValid("%^#another_name")).toEqual(false);
-    });
-
-    it("contains invalid character", () => {
-      expect(isVarNameValid("n#%ame")).toEqual(false);
-      expect(isVarNameValid("an#other_na%me")).toEqual(false);
-    });
-
-    it("valid names", () => {
-      expect(isVarNameValid("valid_var_name")).toEqual(true);
-      expect(isVarNameValid("AnotherValidName")).toEqual(true);
-      expect(isVarNameValid("ಠ_ಠ")).toEqual(true);
     });
   });
 

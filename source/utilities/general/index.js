@@ -3,6 +3,7 @@
  * @module General
  *
  */
+ const validVarName = require("../../constants/validVarName");
 
 /**
  * Verifies whether any of the arguments provided is nil.
@@ -139,6 +140,20 @@ const toFixed = (digits=2) => {
   };
 };
 
+/**
+  * Run a validation to know if the name of a variable is valid or not
+  * @example
+  * isVarNameValid("valid_var_name"); //=> true
+  * isVarNameValid("do"); //=> false
+  *
+  * @param {string} value - The suggested name of a variable
+  * @returns {boolean}
+  *
+  */
+const isValidVarName = (value) => {
+  return validVarName.test(value);
+};
+
 
 module.exports = {
   containNils,
@@ -147,5 +162,6 @@ module.exports = {
   isNil,
   isTruthy,
   isUndefined,
-  toFixed
+  toFixed,
+  isValidVarName
 }
