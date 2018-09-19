@@ -14,7 +14,7 @@ describe("Testing formatters", () => {
   it('formatters exports a fixed number of functions', () => {
     //Dear developer, if you are modifying this number, remember to write the corresponding test
     //                                           ▼
-    expect(Object.keys(formatters)).toHaveLength(2);
+    expect(Object.keys(formatters)).toHaveLength(4);
   });
 
   describe("toPercentage()", () => {
@@ -78,16 +78,47 @@ describe("Testing formatters", () => {
     });
   });
 
-  describe("snakeToCamelCase", () => {
+  describe("isVarNameValid()", () => {
+    const { isVarNameValid } = formatters;
+    it("reserved names invalid", () => {
+      expect(isVarNameValid("do")).toEqual(false);
+      expect(isVarNameValid("class")).toEqual(false);
+      expect(isVarNameValid("if")).toEqual(false);
+    });
+
+    it("start with invalid character", () => {
+      expect(isVarNameValid("#$%name")).toEqual(false);
+      expect(isVarNameValid("%^#another_name")).toEqual(false);
+    });
+
+    it("contains invalid character", () => {
+      expect(isVarNameValid("n#%ame")).toEqual(false);
+      expect(isVarNameValid("an#other_na%me")).toEqual(false);
+    });
+
+    it("valid names", () => {
+      expect(isVarNameValid("valid_var_name")).toEqual(true);
+      expect(isVarNameValid("AnotherValidName")).toEqual(true);
+      expect(isVarNameValid("ಠ_ಠ")).toEqual(true);
+    });
+  });
+
+  describe("snakeToCamelCase()", () => {
     const { snakeToCamelCase } = formatters;
     it("format snake case string into camel case", () => {
       expect(snakeToCamelCase("snake_case_text")).toEqual("snakeCaseText");
       expect(snakeToCamelCase("snakeCase_text")).toEqual("snakecaseText");
       expect(snakeToCamelCase("snake_caseText")).toEqual("snakeCasetext");
     });
+
     it("format snake case string into camel case including the first letter", () => {
       expect(snakeToCamelCase("snake_case_text", true)).toEqual("SnakeCaseText");
     });
-  });
 
+    it("throws an error when the var name is invalid", () => {
+      expect(() => { snakeToCamelCase("snake_ca@#se_text") }).toThrowError('Var name is not valid');
+      expect(() => { snakeToCamelCase("do") }).toThrowError('Var name is not valid');
+      expect(() => { snakeToCamelCase("#snake_case_text") }).toThrowError('Var name is not valid');
+    });
+  });
 });
