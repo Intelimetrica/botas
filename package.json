@@ -1,6 +1,6 @@
 {
   "name": "botas",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Intelimetrica's sidekick for Js development. A helpers library",
   "main": "./distribution/index.js",
   "scripts": {
