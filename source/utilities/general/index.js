@@ -150,9 +150,7 @@ const toFixed = (digits=2) => {
   * @returns {boolean}
   *
   */
-const isValidVarName = (value) => {
-  return validVarName.test(value);
-};
+const isValidVarName = (value) => validVarName.test(value);
 
 
 module.exports = {
