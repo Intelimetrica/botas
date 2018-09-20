@@ -2,7 +2,8 @@ const formatters = require('./index');
 /*
 module.exports = {
   separateThousands,
-  toPercentage
+  snakeToCamelCase
+  toPercentage,
 }
 */
 
@@ -31,6 +32,25 @@ describe("Testing formatters", () => {
 
     it("assumes a 2 floating points number", () => {
       expect(toPercentage(fnumber)).toEqual(expect.stringMatching(matcher(2)));
+    });
+  });
+
+  describe("snakeToCamelCase()", () => {
+    const { snakeToCamelCase } = formatters;
+    it("format snake case string into camel case", () => {
+      expect(snakeToCamelCase("snake_case_text")).toEqual("snakeCaseText");
+      expect(snakeToCamelCase("snakeCase_text")).toEqual("snakecaseText");
+      expect(snakeToCamelCase("snake_caseText")).toEqual("snakeCasetext");
+    });
+
+    it("format snake case string into camel case including the first letter", () => {
+      expect(snakeToCamelCase("snake_case_text", true)).toEqual("SnakeCaseText");
+    });
+
+    it("throws an error when the var name is invalid", () => {
+      expect(() => { snakeToCamelCase("snake_ca@#se_text") }).toThrowError('Var name is not valid');
+      expect(() => { snakeToCamelCase("do") }).toThrowError('Var name is not valid');
+      expect(() => { snakeToCamelCase("#snake_case_text") }).toThrowError('Var name is not valid');
     });
   });
 
@@ -75,25 +95,6 @@ describe("Testing formatters", () => {
       expect(separateThousands("-100.10000")).toEqual("-100.10000");
       expect(separateThousands("-1000.1234567")).toEqual("-1,000.1234567");
       expect(separateThousands("-10000.1234567")).toEqual("-10,000.1234567");
-    });
-  });
-
-  describe("snakeToCamelCase()", () => {
-    const { snakeToCamelCase } = formatters;
-    it("format snake case string into camel case", () => {
-      expect(snakeToCamelCase("snake_case_text")).toEqual("snakeCaseText");
-      expect(snakeToCamelCase("snakeCase_text")).toEqual("snakecaseText");
-      expect(snakeToCamelCase("snake_caseText")).toEqual("snakeCasetext");
-    });
-
-    it("format snake case string into camel case including the first letter", () => {
-      expect(snakeToCamelCase("snake_case_text", true)).toEqual("SnakeCaseText");
-    });
-
-    it("throws an error when the var name is invalid", () => {
-      expect(() => { snakeToCamelCase("snake_ca@#se_text") }).toThrowError('Var name is not valid');
-      expect(() => { snakeToCamelCase("do") }).toThrowError('Var name is not valid');
-      expect(() => { snakeToCamelCase("#snake_case_text") }).toThrowError('Var name is not valid');
     });
   });
 });

@@ -44,6 +44,29 @@ const separateThousands = value => {
 };
 
 /**
+* Run a pipeline of formatters to transform a string in snake_case style to camelCase
+*
+* @example
+* snakeToCamelCase('snake_case_string'); //=> 'snakeCaseString'
+* snakeToCamelCase('snake_case_string', true); //=> 'SnakeCaseString'
+*
+* @param {string} value - String in snake case style to be transformed to camel case
+* @param {boolean} first_letter - Boolean that indicates if the first letter should be capitalized
+* @returns {string}
+*
+*/
+const snakeToCamelCase = (value, pascal_case=false) => {
+  const pipeline = [
+    word    => word.split('_'),
+    words   => words.map(w => capitalize(w)),
+    words   => { if (!pascal_case) { words[0] = words[0].toLowerCase() } return words },
+    words   => words.join(''),
+    varName => { if(!isValidVarName(varName)) { throw "Var name is not valid" } else return varName }
+  ];
+  return flow(pipeline)(value);
+};
+
+/**
  * Run a pipeline of formatters to transform a ranged 0 to 1 number into a
  * readable percentage.
  * The output would look like `XX.XX %`
@@ -63,33 +86,10 @@ const toPercentage = (value, decimal_points=2) => flow([
   addPostfix(" %")
 ])(value);
 
-/**
-  * Run a pipeline of formatters to transform a string in snake_case style to camelCase
-  *
-  * @example
-  * snakeToCamelCase('snake_case_string'); //=> 'snakeCaseString'
-  * snakeToCamelCase('snake_case_string', true); //=> 'SnakeCaseString'
-  *
-  * @param {string} value - String in snake case style to be transformed to camel case
-  * @param {boolean} first_letter - Boolean that indicates if the first letter should be capitalized
-  * @returns {string}
-  *
-  */
-const snakeToCamelCase = (value, pascal_case=false) => {
-  const pipeline = [
-    word    => word.split('_'),
-    words   => words.map(w => capitalize(w)),
-    words   => { if (!pascal_case) { words[0] = words[0].toLowerCase() } return words },
-    words   => words.join(''),
-    varName => { if(!isValidVarName(varName)) { throw "Var name is not valid" } else return varName }
-  ];
-  return flow(pipeline)(value);
-};
-
 //TODO: Add price, area, distance and range formatters
 
 module.exports = {
   separateThousands,
-  toPercentage,
-  snakeToCamelCase
+  snakeToCamelCase,
+  toPercentage
 }

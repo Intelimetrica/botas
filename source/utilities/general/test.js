@@ -10,7 +10,9 @@ module.exports = {
   formatIfExist,
   isNil,
   isTruthy,
-  isUndefined
+  isUndefined,
+  isValidVarName
+  toFixed,
 }
 */
 
@@ -114,27 +116,17 @@ describe("Testing utils", () => {
       expect(isUndefined([])).toEqual(false);
       expect(isUndefined({})).toEqual(false);
       expect(isUndefined("")).toEqual(false);
-    });
-  });
+    });module.exports = {
+  containNils,
+  flow,
+  formatIfExist,
+  isNil,
+  isTruthy,
+  isUndefined,
+  isValidVarName
+  toFixed,
+}
 
-  describe("toFixed()", () => {
-    const { toFixed } = utils;
-    it("returns value unchanged if non numerical value is provided", () => {
-      expect(toFixed(2)("non numeric")).toEqual("non numeric");
-      expect(toFixed(2)("9.12345")).toEqual("9.12345");
-    });
-
-    it("adds a fixed amount of decimal points", () => {
-      expect(toFixed(1)(0.123456)).toEqual("0.1");
-      expect(toFixed(2)(0.123456)).toEqual("0.12");
-      expect(toFixed(3)(0.123456)).toEqual("0.123");
-      expect(toFixed(4)(0.123456)).toEqual("0.1235"); //toFixed rounds up
-    });
-
-    it("fixes 2 decimal points by default", () => {
-      expect(toFixed()(0.123456)).toEqual("0.12");
-      expect(toFixed()(1)).toEqual("1.00");
-    });
   });
 
   describe("isValidVarName()", () => {
@@ -159,6 +151,26 @@ describe("Testing utils", () => {
       expect(isValidVarName("valid_var_name")).toEqual(true);
       expect(isValidVarName("AnotherValidName")).toEqual(true);
       expect(isValidVarName("ಠ_ಠ")).toEqual(true);
+    });
+  });
+
+  describe("toFixed()", () => {
+    const { toFixed } = utils;
+    it("returns value unchanged if non numerical value is provided", () => {
+      expect(toFixed(2)("non numeric")).toEqual("non numeric");
+      expect(toFixed(2)("9.12345")).toEqual("9.12345");
+    });
+
+    it("adds a fixed amount of decimal points", () => {
+      expect(toFixed(1)(0.123456)).toEqual("0.1");
+      expect(toFixed(2)(0.123456)).toEqual("0.12");
+      expect(toFixed(3)(0.123456)).toEqual("0.123");
+      expect(toFixed(4)(0.123456)).toEqual("0.1235"); //toFixed rounds up
+    });
+
+    it("fixes 2 decimal points by default", () => {
+      expect(toFixed()(0.123456)).toEqual("0.12");
+      expect(toFixed()(1)).toEqual("1.00");
     });
   });
 });
