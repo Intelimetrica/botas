@@ -10,7 +10,9 @@ module.exports = {
   formatIfExist,
   isNil,
   isTruthy,
-  isUndefined
+  isUndefined,
+  isValidVarName
+  toFixed,
 }
 */
 
@@ -22,7 +24,7 @@ describe("Testing utils", () => {
   it('utils exports a fixed number of functions', () => {
     //Dear developer, if you are modifying this number, remember to write the corresponding test
     //                                      ▼
-    expect(Object.keys(utils)).toHaveLength(7);
+    expect(Object.keys(utils)).toHaveLength(8);
   });
 
   describe("containNils()", () => {
@@ -114,6 +116,41 @@ describe("Testing utils", () => {
       expect(isUndefined([])).toEqual(false);
       expect(isUndefined({})).toEqual(false);
       expect(isUndefined("")).toEqual(false);
+    });module.exports = {
+  containNils,
+  flow,
+  formatIfExist,
+  isNil,
+  isTruthy,
+  isUndefined,
+  isValidVarName
+  toFixed,
+}
+
+  });
+
+  describe("isValidVarName()", () => {
+    const { isValidVarName } = utils;
+    it("reserved names invalid", () => {
+      expect(isValidVarName("do")).toEqual(false);
+      expect(isValidVarName("class")).toEqual(false);
+      expect(isValidVarName("if")).toEqual(false);
+    });
+
+    it("start with invalid character", () => {
+      expect(isValidVarName("#$%name")).toEqual(false);
+      expect(isValidVarName("%^#another_name")).toEqual(false);
+    });
+
+    it("contains invalid character", () => {
+      expect(isValidVarName("n#%ame")).toEqual(false);
+      expect(isValidVarName("an#other_na%me")).toEqual(false);
+    });
+
+    it("valid names", () => {
+      expect(isValidVarName("valid_var_name")).toEqual(true);
+      expect(isValidVarName("AnotherValidName")).toEqual(true);
+      expect(isValidVarName("ಠ_ಠ")).toEqual(true);
     });
   });
 
@@ -137,4 +174,3 @@ describe("Testing utils", () => {
     });
   });
 });
-
