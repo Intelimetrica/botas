@@ -116,17 +116,7 @@ describe("Testing utils", () => {
       expect(isUndefined([])).toEqual(false);
       expect(isUndefined({})).toEqual(false);
       expect(isUndefined("")).toEqual(false);
-    });module.exports = {
-  containNils,
-  flow,
-  formatIfExist,
-  isNil,
-  isTruthy,
-  isUndefined,
-  isValidVarName
-  toFixed,
-}
-
+    });
   });
 
   describe("isValidVarName()", () => {
