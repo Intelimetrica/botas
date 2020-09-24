@@ -5,14 +5,15 @@
  * in this module use methods from other modules.
  * @module Formatters
  */
-const { flow, toFixed, isNil, isValidVarName } = require("../general");
-const { addPostfix, separate, capitalize } = require("../string");
-const { sign, abs }            = Math;
-const { isInteger }            = Number;
+const get = require('lodash.get');
+const { flow, toFixed, isNil, isValidVarName } = require('../general');
+const { addPostfix, separate, capitalize } = require('../string');
+const { sign, abs } = Math;
+const { isInteger } = Number;
 
 
 /**
- * Separate input from right to left in buckets of 3 digits using commas.
+ * Separate input from right to left in buckets of 3 digits using specified delimiters.
  * Useful to format prices.
  *
  * @example
@@ -29,16 +30,26 @@ const { isInteger }            = Number;
  * separateThousands("1000.1234567"); //=> '1,000.1234567'
  * separateThousands("-100.10000"); //=> '-100.10000'
  *
- * @param {number|string} value - Input that will be separated with commas every 3 elements
+ * @example
+ * delimiters = { thousands: '.', decimal: ',' }
+ * separateThousands(12000, delimiters); //=>'12.000'
+ * separateThousands('1250000', delimiters); //=> '1.250.000'
+ * separateThousands(-1000, delimiters); //=> '-1.000'
+ * separateThousands(1000.111, delimiters); //=> '1.000,111'
+ *
+ * @param {number|string} value - Input that will be formatted with the specified delimiters
+ * @param {object} delimiters - Object with delimiter settings. Default to { thousands: ',', decimal: '.' }
  * @returns {string}
  */
-const separateThousands = value => {
+const separateThousands = (value, delimiters = {}) => {
   if (isNil(value)) return null;
   if (isNaN(value)) return value;
+  const thousandsSeparator = get(delimiters, 'thousands', ',');
+  const decimalSeparator = get(delimiters, 'decimal', '.');
 
   const v_sign = (sign(value)<0) ? '-' : '';
-  const integer = separate(parseInt(abs(value)), 3, ',', true);
-  const floating_points = isInteger(Number(value)) ? '' : `.${("" + value).split(".")[1]}`;
+  const integer = separate(parseInt(abs(value)), 3, thousandsSeparator, true);
+  const floating_points = isInteger(Number(value)) ? '' : `${decimalSeparator}${('' + value).split('.')[1]}`;
 
   return `${v_sign}${integer}${floating_points}`
 };
