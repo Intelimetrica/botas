@@ -85,18 +85,18 @@ describe("Testing time utilities", () => {
   describe("dateSpread()", () => {
     const {dateSpread} = util;
     it("Generates an array representation of a date", () => {
-      expect(dateSpread(DATE)).toEqual(['2018', '06', '20', '01', '02']);
-      expect(dateSpread(DATE, false)).toEqual(['2018', '6', '20', '1', '2']);
+      expect(dateSpread(DATE)).toEqual(['2018', '06', '20', '06', '02']);
+      expect(dateSpread(DATE, false)).toEqual(['2018', '6', '20', '6', '2']);
 
       mockDate();
-      expect(dateSpread()).toEqual(['2018', '06', '20', '01', '02']);
+      expect(dateSpread()).toEqual(['2018', '06', '20', '06', '02']);
     });
   });
 
   describe("dateBasedSerial()", () => {
     const {dateBasedSerial} = util;
     it("Generates a serial based on the provided date", () => {
-      const serial = '201806200102';
+      const serial = '201806200602';
       expect(dateBasedSerial(DATE)).toEqual(serial);
 
       mockDate();
