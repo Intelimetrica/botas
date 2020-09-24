@@ -37,7 +37,7 @@ const { isInteger } = Number;
  * separateThousands(-1000, delimiters); //=> '-1.000'
  * separateThousands(1000.111, delimiters); //=> '1.000,111'
  *
- * @param {number|string} value - Input that will be separated with specified thousands delimiter every 3 elements
+ * @param {number|string} value - Input that will be formated with the specified delimiters
  * @param {object} delimiters - Object with delimiter settings. Default to { thousands: ',', decimal: '.' }
  * @returns {string}
  */
