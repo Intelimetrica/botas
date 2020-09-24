@@ -56,7 +56,12 @@ describe("Testing formatters", () => {
 
   describe("separateThousands()", () => {
     const { separateThousands } = formatters;
-    it("separate numbers with commas every 1000", () => {
+    const delimiters = {
+      thousands: '.',
+      decimal: ','
+    };
+
+    it("separate numbers every 1000 with default limiters", () => {
       expect(separateThousands(1)).toEqual("1");
       expect(separateThousands(10)).toEqual("10");
       expect(separateThousands(100)).toEqual("100");
@@ -67,7 +72,7 @@ describe("Testing formatters", () => {
       expect(separateThousands(10000000)).toEqual("10,000,000");
     });
 
-    it("won't work with strings", () => { // so be careful non numeric strings
+    it("won't work with strings with default limiters", () => { // so be careful non numeric strings
       expect(separateThousands("1000000")).toEqual("1,000,000");
       expect(separateThousands("10000000")).toEqual("10,000,000");
       expect(separateThousands("hola")).toEqual("hola");
@@ -76,7 +81,7 @@ describe("Testing formatters", () => {
       expect(separateThousands("10000.1234567")).toEqual("10,000.1234567");
     });
 
-    it("handles float numbers", () => {
+    it("handles float numbers with default limiters", () => {
       expect(separateThousands(0.1)).toEqual("0.1");
       expect(separateThousands(10.10)).toEqual("10.1");
       expect(separateThousands(100.100)).toEqual("100.1");
@@ -85,7 +90,7 @@ describe("Testing formatters", () => {
       expect(separateThousands(1000.111)).toEqual("1,000.111");
     });
 
-    it("handles negative numbers", () => {
+    it("handles negative numbers with default limiters", () => {
       expect(separateThousands(-1)).toEqual("-1");
       expect(separateThousands(-10)).toEqual("-10");
       expect(separateThousands(-100)).toEqual("-100");
@@ -95,6 +100,47 @@ describe("Testing formatters", () => {
       expect(separateThousands("-100.10000")).toEqual("-100.10000");
       expect(separateThousands("-1000.1234567")).toEqual("-1,000.1234567");
       expect(separateThousands("-10000.1234567")).toEqual("-10,000.1234567");
+    });
+
+    it("separate numbers every 1000 with custom delimiters", () => {
+      expect(separateThousands(1, delimiters)).toEqual("1");
+      expect(separateThousands(10, delimiters)).toEqual("10");
+      expect(separateThousands(100, delimiters)).toEqual("100");
+      expect(separateThousands(1000, delimiters)).toEqual("1.000");
+      expect(separateThousands(10000, delimiters)).toEqual("10.000");
+      expect(separateThousands(100000, delimiters)).toEqual("100.000");
+      expect(separateThousands(1000000, delimiters)).toEqual("1.000.000");
+      expect(separateThousands(10000000, delimiters)).toEqual("10.000.000");
+    });
+
+    it("won't work with strings with custom delimiters", () => {
+      expect(separateThousands("1000000", delimiters)).toEqual("1.000.000");
+      expect(separateThousands("10000000", delimiters)).toEqual("10.000.000");
+      expect(separateThousands("hola", delimiters)).toEqual("hola");
+      expect(separateThousands("0.123456", delimiters)).toEqual("0,123456");
+      expect(separateThousands("1000.1234567", delimiters)).toEqual("1.000,1234567");
+      expect(separateThousands("10000.1234567", delimiters)).toEqual("10.000,1234567");
+    });
+
+    it("handles float numbers with custom delimiters", () => {
+      expect(separateThousands(0.1, delimiters)).toEqual("0,1");
+      expect(separateThousands(10.10, delimiters)).toEqual("10,1");
+      expect(separateThousands(100.100, delimiters)).toEqual("100,1");
+      expect(separateThousands(1000.1000, delimiters)).toEqual("1.000,1");
+      expect(separateThousands(1000.11, delimiters)).toEqual("1.000,11");
+      expect(separateThousands(1000.111, delimiters)).toEqual("1.000,111");
+    });
+
+    it("handles negative numbers with custom delimiters", () => {
+      expect(separateThousands(-1, delimiters)).toEqual("-1");
+      expect(separateThousands(-10, delimiters)).toEqual("-10");
+      expect(separateThousands(-100, delimiters)).toEqual("-100");
+      expect(separateThousands(-1000, delimiters)).toEqual("-1.000");
+      expect(separateThousands("-1000000", delimiters)).toEqual("-1.000.000");
+      expect(separateThousands("-10000000", delimiters)).toEqual("-10.000.000");
+      expect(separateThousands("-100.10000", delimiters)).toEqual("-100,10000");
+      expect(separateThousands("-1000.1234567", delimiters)).toEqual("-1.000,1234567");
+      expect(separateThousands("-10000.1234567", delimiters)).toEqual("-10.000,1234567");
     });
   });
 });
